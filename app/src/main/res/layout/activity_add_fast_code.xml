@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <include layout="@layout/include_toolbar"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/name_l"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/text_333"
+            android:textSize="@dimen/text_18"
+            android:gravity="center"
+            android:text="@string/code_name"/>
+
+        <EditText
+            android:id="@+id/name_r"
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toRightOf="@id/name_l"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/text_333"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_18"
+            android:layout_height="@dimen/dp_40" />
+
+        <TextView
+            android:id="@+id/content_l"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_r"
+            android:textColor="@color/text_333"
+            android:textSize="@dimen/text_18"
+            android:gravity="center"
+            android:text="@string/code_content"/>
+
+        <EditText
+            android:id="@+id/et_content_r"
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toRightOf="@id/content_l"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_r"
+            android:textColor="@color/text_333"
+            android:textSize="@dimen/text_18"
+            android:minHeight="400dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/time_l"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_content_r"
+            android:textColor="@color/text_333"
+            android:textSize="@dimen/text_12"
+            android:gravity="center"
+            android:text="@string/code_imp"/>
+
+        <TextView
+            android:id="@+id/time_r"
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toRightOf="@id/name_l"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_content_r"
+            android:textColor="@color/text_333"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_12"
+            android:layout_height="@dimen/dp_40" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="submit"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:background="@color/text_999"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:text="提交"/>
+</LinearLayout>

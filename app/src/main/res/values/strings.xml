@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">自律鸡</string>
+    <string name="no_data_error_long" translatable="false">这里空空如也</string>
+    <string name="net_error">亲，你的手机网络不太顺畅喔</string>
+    <string name="share_donot_install_app">没有安装相应的应用，无法分享</string>
+    <string name="login_donot_install_app">您未安装微信，请使用其它登录方式</string>
+    <string name="bind_donot_install_app">没有安装相应的应用，无法绑定</string>
+
+    <string name="net_error_long" translatable="false">网络请求失败</string>
+    <string name="reload" translatable="false">重新加载</string>
+    <string name="code_name" translatable="false">作者:</string>
+    <string name="code_type" translatable="false">类型:</string>
+    <string name="code_type_desc" translatable="false">类型描述:</string>
+    <string name="code_content" translatable="false">内容:</string>
+    <string name="code_imp" translatable="false">是否重要:</string>
+    <string name="code_time" translatable="false">创建时间:</string>
+</resources>

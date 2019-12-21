@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="statusbarutil_fake_status_bar_view" type="id"/>
+    <item name="statusbarutil_translucent_view" type="id"/>
+    <item name="toast_main_text_view_id" type="id"/>
+
+    <item name="last_click_time" type="id"/>
+</resources>
