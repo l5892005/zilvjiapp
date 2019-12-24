@@ -15,6 +15,7 @@ import com.rongwei.fastcodeaccumulate.injector.components.DaggerMainHomeComponen
 import com.rongwei.fastcodeaccumulate.injector.modules.MainHomeModule;
 import com.rongwei.fastcodeaccumulate.module.base.BaseActivity;
 import com.rongwei.fastcodeaccumulate.module.base.BaseFragment;
+import com.rongwei.fastcodeaccumulate.module.fragment.main.MyHabit.MyHabitFragment;
 import com.rongwei.fastcodeaccumulate.module.fragment.main.home.HomeFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
@@ -68,7 +69,7 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
     protected void initView() {
         mFragments = new BaseFragment[3];
         HomeFragment homeFragment = HomeFragment.newInstance();
-        HomeFragment ployFragment = HomeFragment.newInstance();
+        MyHabitFragment ployFragment = MyHabitFragment.newInstance();
         HomeFragment ployFragment2 = HomeFragment.newInstance();
         mFragments[0] = homeFragment;
         mFragments[1] = ployFragment;

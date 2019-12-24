@@ -21,9 +21,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".module.home.addfast.AddFastCodeActivity" />
-        <activity android:name=".module.mian.MainActivity">
-
-        </activity>
     </application>
 
 </manifest>
