@@ -96,12 +96,13 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
         //List<UserCardsBean.DataBean> data = bean.getData();
         String imageName = bean.getImageName();
         String cardName = bean.getCardName();
-        String imageCode = bean.getImageCode();
+        String imageCode = bean.getImgCode();
         String imageCount = bean.getImageCount();
         String[] splitImageName = imageName.split("\\|");
         String[] splitCardName = cardName.split("\\|");
         String[] splitImageCode = imageCode.split("\\|");
         String[] splitImageCount = imageCount.split("\\|");
+       // String[] splitCardStauts = bean.getCodeCard().split("\\|");
         char[] splitImageStatus = bean.getCodeCard().toCharArray();
         userCardsBeans = new ArrayList<>();
         for (int i = 0; i < splitImageCode.length; i++) {
@@ -145,6 +146,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
     public void setStatusSucess(String userId, int postion, int isCard) {
         UserCardsBean userCardsBean = userCardsBeans.get(postion-1);
         userCardsBean.setImgstatic(isCard+"");
+        if (isCard==1){
+            userCardsBean.setImgsCount(Integer.parseInt(userCardsBean.getImgsCount())+1+"");
+        }
         baseQuickAdapter.notifyDataSetChanged();
     }
 

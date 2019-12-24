@@ -17,7 +17,7 @@ public class UserCardsToDayBean {
     private String createTime;
     private String udaytime;
     private String codeCard;
-    private String imageCode;
+    private String imgCode;
     private String imageName;
     private String imageCount;
     private String cardName;
@@ -62,12 +62,12 @@ public class UserCardsToDayBean {
         this.codeCard = codeCard;
     }
 
-    public String getImageCode() {
-        return imageCode;
+    public String getImgCode() {
+        return imgCode;
     }
 
-    public void setImageCode(String imageCode) {
-        this.imageCode = imageCode;
+    public void setImgCode(String imgCode) {
+        this.imgCode = imgCode;
     }
 
     public String getImageName() {
