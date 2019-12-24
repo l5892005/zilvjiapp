@@ -5,4 +5,7 @@
     <item name="toast_main_text_view_id" type="id"/>
 
     <item name="last_click_time" type="id"/>
+    <item name="tab_index" type="id"/>
+    <item name="tab_thow" type="id"/>
+    <item name="tab_three" type="id"/>
 </resources>

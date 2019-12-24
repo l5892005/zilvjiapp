@@ -14,4 +14,6 @@
     <string name="code_content" translatable="false">内容:</string>
     <string name="code_imp" translatable="false">是否重要:</string>
     <string name="code_time" translatable="false">创建时间:</string>
+    <string name="very_work" translatable="false">每日工作:</string>
+    <string name="very_card" translatable="false">每日打卡:</string>
 </resources>

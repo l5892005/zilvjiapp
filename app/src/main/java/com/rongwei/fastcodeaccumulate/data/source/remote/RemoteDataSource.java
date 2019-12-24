@@ -4,6 +4,9 @@ package com.rongwei.fastcodeaccumulate.data.source.remote;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
+import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
+import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
+import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
 import com.rongwei.fastcodeaccumulate.data.param.InserFastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.source.DataSource;
 import com.rongwei.fastcodeaccumulate.http.API;
@@ -12,6 +15,7 @@ import com.rongwei.fastcodeaccumulate.http.converter.CustomGsonConverterFactory;
 import com.rongwei.fastcodeaccumulate.http.intercept.HeaderParamIntercept;
 
 import java.util.concurrent.TimeUnit;
+import java.util.function.DoubleUnaryOperator;
 
 import io.reactivex.Observable;
 import okhttp3.OkHttpClient;
@@ -77,6 +81,23 @@ public class RemoteDataSource implements DataSource {
     @Override
     public Observable<BaseResultWrapper<String>> inserFastCode(InserFastCodeBean inserFastCodeBean) {
         return  retrofit.create(API.BaseApi.class).inserFastCode(inserFastCodeBean.getName(),inserFastCodeBean.getType(),inserFastCodeBean.getTypedesc(),inserFastCodeBean.getContent(),inserFastCodeBean.getImportd());
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<MemoBean>> getMemoData(String userId) {
+        return  retrofit.create(API.BaseApi.class).getMemoData(userId);
+    }
+
+    public Observable<BaseResultWrapper<UserCardsBean>> getCardData(String userId) {
+        return retrofit.create(API.BaseApi.class).getCardData(userId);
+    }
+
+    public Observable<BaseResultWrapper<UserCardsToDayBean>> getCardDataToDay(String userId) {
+        return retrofit.create(API.BaseApi.class).getCardDataToDay(userId);
+    }
+
+    public Observable<BaseResultWrapper<String>> setCardTodayData(String userId, int order, int isCard) {
+        return retrofit.create(API.BaseApi.class).setCardTodayData(userId,order,isCard);
     }
 
   /*  @Override

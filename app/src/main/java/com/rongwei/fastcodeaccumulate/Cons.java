@@ -32,4 +32,5 @@ public class Cons {
 
     //Intent result code
     public static final int INTENT_RESULT_OK = 10086;
+    public static final String USER_ID = "1";
 }

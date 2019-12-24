@@ -13,7 +13,7 @@
         android:src="@drawable/nothing"
         android:layout_marginTop="85dp"
         android:textColor="@color/text_666"
-        android:textSize="@dimen/text_14" />
+        android:textSize="@dimen/sp_14" />
 
     <TextView
         android:id="@+id/tv_text"

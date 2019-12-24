@@ -4,6 +4,9 @@ package com.rongwei.fastcodeaccumulate.data.source;
 
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
+import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
+import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
+import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
 import com.rongwei.fastcodeaccumulate.data.bean.WxLoginBean;
 import com.rongwei.fastcodeaccumulate.data.param.InserFastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.param.LoginParam;
@@ -12,6 +15,7 @@ import com.rongwei.fastcodeaccumulate.data.source.remote.RemoteDataSource;
 
 import java.io.File;
 import java.util.Map;
+import java.util.function.DoubleUnaryOperator;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -65,9 +69,28 @@ public class Repository implements DataSource {
         return mRemoteDataSource.getAllData().compose(this.<BaseResultWrapper<FastCodeBean>>initNetworkThread());
     }
 
+
+
     @Override
     public Observable<BaseResultWrapper<String>> inserFastCode(InserFastCodeBean inserFastCodeBean) {
         return mRemoteDataSource.inserFastCode(inserFastCodeBean).compose(this.<BaseResultWrapper<String>>initNetworkThread());
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<MemoBean>> getMemoData(String userId) {
+        return mRemoteDataSource.getMemoData(userId).compose(this.<BaseResultWrapper<MemoBean>>initNetworkThread());
+    }
+
+    public Observable<BaseResultWrapper<UserCardsBean>> getCardData(String userId) {
+        return mRemoteDataSource.getCardData(userId).compose(this.<BaseResultWrapper<UserCardsBean>>initNetworkThread());
+    }
+
+    public Observable<BaseResultWrapper<UserCardsToDayBean>> getCardDataToDay(String userId) {
+        return mRemoteDataSource.getCardDataToDay(userId).compose(this.<BaseResultWrapper<UserCardsToDayBean>>initNetworkThread());
+    }
+
+    public Observable<BaseResultWrapper<String>> setCardTodayData(String userId, int order, int isCard) {
+        return mRemoteDataSource.setCardTodayData(userId,order,isCard).compose(this.<BaseResultWrapper<String>>initNetworkThread());
     }
   /*
 

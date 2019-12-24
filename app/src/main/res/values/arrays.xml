@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="img_list">
+        <item>fengche</item>
+        <item>fengxiangdai</item>
+        <item>index</item>
+        <item>jiaoying</item>
+        <item>kaohuo</item>
+        <item>mianbao</item>
+        <item>paiqiu</item>
+        <item>pangxie</item>
+        <item>pisa</item>
+        <item>qianshui</item>
+        <item>shangdian</item>
+        <item>thow</item>
+        <item>three</item>
+        <item>tuoxie</item>
+        <item>xizao</item>
+        <item>xuegao</item>
+        <item>yongquan</item>
+        <item>yugu</item>
+    </string-array>
+    <array name="img_list_ids">
+        <item>@drawable/fengche</item>
+        <item>@drawable/fengxiangdai</item>
+        <item>@drawable/index</item>
+        <item>@drawable/jiaoying</item>
+        <item>@drawable/kaohuo</item>
+        <item>@drawable/mianbao</item>
+        <item>@drawable/paiqiu</item>
+        <item>@drawable/pangxie</item>
+        <item>@drawable/pisa</item>
+        <item>@drawable/qianshui</item>
+        <item>@drawable/shangdian</item>
+        <item>@drawable/thow</item>
+        <item>@drawable/three</item>
+        <item>@drawable/tuoxie</item>
+        <item>@drawable/xizao</item>
+        <item>@drawable/xuegao</item>
+        <item>@drawable/yongquan</item>
+        <item>@drawable/yugu</item>
+    </array>
+</resources>

@@ -49,6 +49,7 @@
     <color name="view_bg_dd5">#dd5335</color>
 
 
+
     <color name="text_tab_sel">#333333</color>
     <color name="text_333">#333333</color>
     <color name="text_tab_unsel">#808080</color>
@@ -60,7 +61,9 @@
 
     <color name="divider_e0">#e0e0e0</color>
 
-
+    <color name="card_color_dd5">#dd5335</color>
+    <color name="card_color_f9b">#f9bf5b</color>
+    <color name="card_color_5a2">#5a2807</color>
 
 
 
