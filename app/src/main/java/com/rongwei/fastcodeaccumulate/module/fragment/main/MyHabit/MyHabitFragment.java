@@ -5,10 +5,11 @@ import com.rongwei.fastcodeaccumulate.R;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerMyHabitComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.MyHabitModule;
 import com.rongwei.fastcodeaccumulate.module.base.BaseFragment;
+import com.rongwei.fastcodeaccumulate.module.base.ToolbarActivity;
 
 import javax.inject.Inject;
 
-public class MyHabitFragment extends BaseFragment implements MyHabitContract.View {
+public class MyHabitFragment extends ToolbarActivity implements MyHabitContract.View {
 
     @Inject
     MyHabitContract.Presenter mPresenter;
@@ -41,7 +42,12 @@ public class MyHabitFragment extends BaseFragment implements MyHabitContract.Vie
 
     @Override
     protected void initView() {
+        super.initView();
+    }
 
+    @Override
+    protected String setToolbarTitle() {
+        return getResources().getString(R.string.my_habit);
     }
 
     @Override
