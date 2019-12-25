@@ -6,6 +6,7 @@ import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
 import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
+import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
 
@@ -52,6 +53,9 @@ public interface API {
 
         @GET("v1/get_note_list")
         Observable<BaseResultWrapper<PersionNoteListBean>> getNoteListCatalog(@Query("userId")int userId, @Query("nid")int nid);
+
+        @GET("v1/login")
+        Observable<BaseResultWrapper<UserBean>> setLogin(@Query("userId")String userId,@Query("pwd") String pwd);
     }
 
     interface UserApi {

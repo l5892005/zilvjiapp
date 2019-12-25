@@ -7,6 +7,7 @@ import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
 import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
+import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
 import com.rongwei.fastcodeaccumulate.data.param.InserFastCodeBean;
@@ -109,6 +110,11 @@ public class RemoteDataSource implements DataSource {
 
     public Observable<BaseResultWrapper<PersionNoteListBean>>  getNoteListCatalog(int uid, int nid) {
         return retrofit.create(API.BaseApi.class).getNoteListCatalog(uid,nid);
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<UserBean>> setLogin(String account, String pwd) {
+        return retrofit.create(API.BaseApi.class).setLogin(account,pwd);
     }
 
   /*  @Override
