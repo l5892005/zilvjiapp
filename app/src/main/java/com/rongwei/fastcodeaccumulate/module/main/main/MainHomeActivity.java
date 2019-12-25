@@ -17,6 +17,7 @@ import com.rongwei.fastcodeaccumulate.module.base.BaseActivity;
 import com.rongwei.fastcodeaccumulate.module.base.BaseFragment;
 import com.rongwei.fastcodeaccumulate.module.fragment.main.MyHabit.MyHabitFragment;
 import com.rongwei.fastcodeaccumulate.module.fragment.main.home.HomeFragment;
+import com.rongwei.fastcodeaccumulate.module.fragment.main.tool.MyToolFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -70,10 +71,10 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
         mFragments = new BaseFragment[3];
         HomeFragment homeFragment = HomeFragment.newInstance();
         MyHabitFragment ployFragment = MyHabitFragment.newInstance();
-        HomeFragment ployFragment2 = HomeFragment.newInstance();
+        MyToolFragment myToolFragment = MyToolFragment.newInstance();
         mFragments[0] = homeFragment;
         mFragments[1] = ployFragment;
-        mFragments[2] = ployFragment2;
+        mFragments[2] = myToolFragment;
         bottomBar.setDefaultTabPosition(TAB_ONE);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override

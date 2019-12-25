@@ -156,7 +156,7 @@ public class DateUtils {
         Long currentTime = getCurrentTimeMs();
         if (isSameDay(currentTime, time)) {
             //同一天
-            return formatTime(time, "HH:mm");
+            return formatTime(time, "今天 HH:mm");
         } else if (isYesterday(time)) {
             //昨天
             return formatTime(time, "昨天 HH:mm");

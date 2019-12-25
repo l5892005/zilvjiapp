@@ -1,20 +1,17 @@
-package com.rongwei.fastcodeaccumulate.module.fragment.main.MyHabit;
+package com.rongwei.fastcodeaccumulate.module.note.detail;
 
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
 import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
 import com.rongwei.fastcodeaccumulate.module.base.IBasePresenter;
 import com.rongwei.fastcodeaccumulate.module.base.IBaseView;
 
-import java.util.List;
-
-public interface MyHabitContract {
+public interface NoteDetailContract {
     interface View extends IBaseView {
-        void getNoteCatalogSucess(NoteCatalogBean uid);
+        void getCardDataSucess(PersionNoteListBean bean);
     }
 
     interface Presenter extends IBasePresenter {
-        void getNoteCatalog(int uid);
-
+        void getNoteListCatalog(int uid,int nid);
     }
 
 }

@@ -5,6 +5,9 @@ package com.rongwei.fastcodeaccumulate.data.source;
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
+import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
+import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
+import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
 import com.rongwei.fastcodeaccumulate.data.bean.WxLoginBean;
@@ -91,6 +94,18 @@ public class Repository implements DataSource {
 
     public Observable<BaseResultWrapper<String>> setCardTodayData(String userId, int order, int isCard) {
         return mRemoteDataSource.setCardTodayData(userId,order,isCard).compose(this.<BaseResultWrapper<String>>initNetworkThread());
+    }
+
+    public Observable<BaseResultWrapper<NoteCatalogBean>> getNoteCatalog(int uid) {
+        return mRemoteDataSource.getNoteCatalog(uid).compose(this.<BaseResultWrapper<NoteCatalogBean>>initNetworkThread());
+    }
+
+    public Observable<BaseResultWrapper<PersionNoteListBean>> getNoteListCatalog(int uid, int nid) {
+        return mRemoteDataSource.getNoteListCatalog(uid,nid).compose(this.<BaseResultWrapper<PersionNoteListBean>>initNetworkThread());
+    }
+
+    public Observable<BaseResultWrapper<UserBean>> setLogin(String account, String pwd) {
+        return mRemoteDataSource.setLogin(account,pwd).compose(this.<BaseResultWrapper<UserBean>>initNetworkThread());
     }
   /*
 

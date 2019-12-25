@@ -1,7 +1,13 @@
 package com.rongwei.fastcodeaccumulate.module.fragment.main.MyHabit;
 
+import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
+import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
+import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.source.Repository;
+import com.rongwei.fastcodeaccumulate.rxjava.observer.SimpleWrapperObserver;
 import com.rongwei.fastcodeaccumulate.utils.NullUtils;
+
+import java.util.List;
 
 
 public class MyHabitPresenter implements MyHabitContract.Presenter {
@@ -12,4 +18,16 @@ public class MyHabitPresenter implements MyHabitContract.Presenter {
         this.mMyHabitView = NullUtils.checkNotNull(view);
         this.mRepository = NullUtils.checkNotNull(mRepository);
     }
+
+    @Override
+    public void getNoteCatalog(int uid) {
+        mRepository.getNoteCatalog(uid).compose(mMyHabitView.initNetLifecycler()).subscribe(new SimpleWrapperObserver<NoteCatalogBean>(mMyHabitView) {
+            @Override
+            public void onSuccess(NoteCatalogBean data) {
+                mMyHabitView.getNoteCatalogSucess(data);
+            }
+        });
+    }
+
+
 }

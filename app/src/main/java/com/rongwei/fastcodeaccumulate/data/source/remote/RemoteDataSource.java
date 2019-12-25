@@ -5,6 +5,8 @@ import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
+import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
+import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
 import com.rongwei.fastcodeaccumulate.data.param.InserFastCodeBean;
@@ -88,6 +90,11 @@ public class RemoteDataSource implements DataSource {
         return  retrofit.create(API.BaseApi.class).getMemoData(userId);
     }
 
+    @Override
+    public Observable<BaseResultWrapper<NoteCatalogBean>> getNoteCatalog(int uid) {
+        return retrofit.create(API.BaseApi.class).getNoteCatalog(uid);
+    }
+
     public Observable<BaseResultWrapper<UserCardsBean>> getCardData(String userId) {
         return retrofit.create(API.BaseApi.class).getCardData(userId);
     }
@@ -98,6 +105,10 @@ public class RemoteDataSource implements DataSource {
 
     public Observable<BaseResultWrapper<String>> setCardTodayData(String userId, int order, int isCard) {
         return retrofit.create(API.BaseApi.class).setCardTodayData(userId,order,isCard);
+    }
+
+    public Observable<BaseResultWrapper<PersionNoteListBean>>  getNoteListCatalog(int uid, int nid) {
+        return retrofit.create(API.BaseApi.class).getNoteListCatalog(uid,nid);
     }
 
   /*  @Override

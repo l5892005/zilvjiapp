@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +23,8 @@ import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerHomeComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.HomeModule;
 import com.rongwei.fastcodeaccumulate.module.base.BaseFragment;
+import com.rongwei.fastcodeaccumulate.utils.SizeUtils;
+import com.rongwei.fastcodeaccumulate.weight.RecycleViewDivider;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -115,11 +118,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
             userCardsBeans.add(userCardsBean);
         }
         Log.d("test", userCardsBeans.toString());
+        TypedArray array = getResources().obtainTypedArray(R.array.img_list_ids);
         baseQuickAdapter = new BaseQuickAdapter<UserCardsBean, BaseViewHolder>(R.layout.user_cards_item, userCardsBeans) {
             @Override
             protected void convert(BaseViewHolder helper, UserCardsBean item) {
                 String[] stringArray = getResources().getStringArray(R.array.img_list);
-                TypedArray array = getResources().obtainTypedArray(R.array.img_list_ids);
                 for (int i = 0; i < stringArray.length; i++) {
                     if (stringArray[i].equals(item.getImgName())) {
                         helper.setImageResource(R.id.iv_img, array.getResourceId(i, 0));
@@ -129,15 +132,20 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
                 if ("0".equals(item.getImgstatic())) {
                     helper.getView(R.id.iv_img).setBackgroundResource(R.drawable.card_bg_gray_cir);
                     helper.getView(R.id.iv_img).setEnabled(true);
+                    helper.getView(R.id.tv_count_day).setVisibility(View.GONE);
                     helper.addOnClickListener(R.id.iv_img);
                 } else {
                     helper.getView(R.id.iv_img).setBackgroundResource(R.drawable.card_bg_cir);
                     helper.getView(R.id.iv_img).setEnabled(false);
+                    helper.getView(R.id.tv_count_day).setVisibility(View.VISIBLE);
+                    helper.setText(R.id.tv_count_day,"总共"+item.getImgsCount()+"天");
                 }
-                helper.setText(R.id.tv_sub, item.getCardName()+"("+item.getImgsCount()+")");
+                helper.setText(R.id.tv_sub, item.getCardName());
             }
         };
-        rvList.setLayoutManager(new GridLayoutManager(mActivity,3));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(mActivity, 3);
+        //rvList.addItemDecoration(new RecycleViewDivider(mActivity,DividerItemDecoration.VERTICAL, SizeUtils.dp2px(20),0,0, getResources().getColor(R.color.white)));
+        rvList.setLayoutManager(gridLayoutManager);
         rvList.setAdapter(baseQuickAdapter);
         baseQuickAdapter.setOnItemChildClickListener(this);
     }

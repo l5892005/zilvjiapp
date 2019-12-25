@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/dp_20"
     android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/iv_img"
@@ -15,6 +16,16 @@
         android:id="@+id/tv_sub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_14"
+        android:textColor="@color/text_000"
+        android:textStyle="bold"
         android:layout_marginTop="@dimen/dp_6"
         />
+    <TextView
+        android:id="@+id/tv_count_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_10"
+        android:textColor="@color/text_999"
+        android:visibility="gone" />
 </LinearLayout>

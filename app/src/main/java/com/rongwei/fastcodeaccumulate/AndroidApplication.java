@@ -6,6 +6,7 @@ import android.content.Context;
 import com.rongwei.fastcodeaccumulate.cons.CacheKey;
 import com.rongwei.fastcodeaccumulate.cons.Channel;
 import com.rongwei.fastcodeaccumulate.cons.SpKey;
+import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.source.Repository;
 import com.rongwei.fastcodeaccumulate.injector.components.ApplicationComponent;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerApplicationComponent;
@@ -42,7 +43,7 @@ public class AndroidApplication extends Application {
     public final boolean isDebug = BuildConfig.isDebug;
     private ActivityListManager mActivityManager;
     //private PublicParamBean mPublicParamBean;
-
+    private UserBean mUser;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -60,38 +61,29 @@ public class AndroidApplication extends Application {
         handleSSLHandshake();
     }
 
-   /* public PublicParamBean getPublicParamBean() {
-        if (mPublicParamBean == null) {
-            return new PublicParamBean();
-        }
-        return mPublicParamBean;
+    public void setUser(UserBean user) {
+        mUser = user;
+        CacheUtils.putBean(CacheKey.USER, mUser);
     }
 
-    public Map<String, String> getPublicParamMap() {
-        Map<String, String> map = new HashMap<String, String>();
-        try {
-            PublicParamBean publicParamBean = getPublicParamBean();
-            Field[] fields = null;
-            String clzName = publicParamBean.getClass().getSimpleName();
-            fields = publicParamBean.getClass().getDeclaredFields();
-            for (Field field : fields) {
-                field.setAccessible(true);
-                String proName = field.getName();
-                Object proValue = field.get(publicParamBean);
-                if (proName != null && proValue != null) {
-                    map.put(proName, proValue.toString());
-                }
-            }
-        }catch (IllegalAccessException e){
-            e.printStackTrace();
+    public UserBean getUser() {
+        if (mUser == null) {
+            mUser = (UserBean) CacheUtils.getBean(CacheKey.USER, UserBean.class);
         }
-        return map;
+        return mUser;
     }
 
-    public void setPublicParamBean(PublicParamBean publicParamBean) {
-        mPublicParamBean = publicParamBean;
+    public void loginout() {
+        mUser = null;
+        CacheUtils.remove(CacheKey.USER);
     }
-*/
+
+    public boolean isLogin() {
+        if (mUser == null) {
+            mUser = (UserBean) CacheUtils.getBean(CacheKey.USER, UserBean.class);
+        }
+        return mUser != null;
+    }
 
     private void initUMeng() {
         //初始化友盟
@@ -169,18 +161,8 @@ public class AndroidApplication extends Application {
         } catch (Exception ignored) {
         }
     }
-
-
-
     public String getDeviceId() {
         return SpUtils.getInstance().getString(SpKey.DEVICE);
     }
-
-    public boolean isLogin() {
-        String token = CacheUtils.getString(CacheKey.TOKEN);
-        return token != null && !token.isEmpty();
-    }
-
-
 
 }

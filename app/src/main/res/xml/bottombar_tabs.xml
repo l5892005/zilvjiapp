@@ -3,14 +3,14 @@
         <tab
             id="@+id/tab_index"
             icon="@drawable/index"
-            title="TODAY" />
+            title="自律打卡" />
 
         <tab
             id="@+id/tab_thow"
             icon="@drawable/thow"
-            title="我的日常" />
+            title="日常笔记" />
         <tab
             id="@+id/tab_three"
             icon="@drawable/three"
-            title="我的工具" />
+            title="理财工具" />
 </tabs>
