@@ -44,6 +44,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
     RecyclerView rvList;
     private BaseQuickAdapter<UserCardsBean, BaseViewHolder> baseQuickAdapter;
     private List<UserCardsBean> userCardsBeans;
+    private boolean isLogin;
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
@@ -68,7 +69,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
 
     @Override
     protected void initData() {
-
+        isLogin = AndroidApplication.getInstance().isLogin();
     }
 
     @Override
@@ -78,8 +79,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
 
     @Override
     protected void loadData() {
-        mPresenter.getMemoData(Cons.USER_ID);
-        mPresenter.getCardDataToDay(Cons.USER_ID);
+        if (isLogin){
+            mPresenter.getMemoData(Cons.USER_ID);
+            mPresenter.getCardDataToDay(Cons.USER_ID);
+        }
     }
 
     @Override

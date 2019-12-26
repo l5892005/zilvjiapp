@@ -13,6 +13,7 @@ import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerLoginComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.LoginModule;
 import com.rongwei.fastcodeaccumulate.module.base.ToolbarActivity;
+import com.rongwei.fastcodeaccumulate.module.main.main.MainHomeActivity;
 
 import javax.inject.Inject;
 
@@ -87,5 +88,6 @@ public class LoginActivity extends ToolbarActivity implements LoginContract.View
     @Override
     public void setLoginSuceess(UserBean string) {
         AndroidApplication.getInstance().setUser(string);
+        MainHomeActivity.start(this);
     }
 }

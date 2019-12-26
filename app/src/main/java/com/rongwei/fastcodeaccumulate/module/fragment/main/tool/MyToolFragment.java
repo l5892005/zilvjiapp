@@ -15,6 +15,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.R;
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
+import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerMyToolComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.MyToolModule;
 import com.rongwei.fastcodeaccumulate.module.base.BaseFragment;
@@ -93,6 +94,13 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
         baseQuickAdapter.setOnItemChildClickListener(this);
         View inflate = LayoutInflater.from(mActivity).inflate(R.layout.item_head_tool, null);
         inflate.findViewById(R.id.iv_img).setOnClickListener(this);
+        if (AndroidApplication.getInstance().isLogin()){
+            UserBean user = AndroidApplication.getInstance().getUser();
+            if (user!=null){
+                TextView tvUser = inflate.findViewById(R.id.tv_user);
+                tvUser.setText(user.getNick());
+            }
+        }
         baseQuickAdapter.addHeaderView(inflate);
     }
 
@@ -100,7 +108,6 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
 
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){

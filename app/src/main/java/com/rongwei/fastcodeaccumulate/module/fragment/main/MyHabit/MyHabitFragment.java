@@ -36,6 +36,7 @@ public class MyHabitFragment extends BaseFragment implements MyHabitContract.Vie
     RecyclerView rvList;
     private List<NoteCatalogBean.DataBean>  noteCatalogBeans=new ArrayList<>();
     private BaseQuickAdapter<NoteCatalogBean.DataBean, BaseViewHolder> baseQuickAdapter;
+    private boolean isLogin;
 
     public static MyHabitFragment newInstance() {
         MyHabitFragment fragment = new MyHabitFragment();
@@ -60,6 +61,7 @@ public class MyHabitFragment extends BaseFragment implements MyHabitContract.Vie
 
     @Override
     protected void initData() {
+        isLogin = AndroidApplication.getInstance().isLogin();
         NoteCatalogBean.DataBean dataBean = new NoteCatalogBean.DataBean();
         noteCatalogBeans.add(dataBean);
     }
@@ -93,7 +95,9 @@ public class MyHabitFragment extends BaseFragment implements MyHabitContract.Vie
 
     @Override
     protected void loadData() {
-        mPresenter.getNoteCatalog(Cons.USER_ID_INT);
+        if (isLogin){
+            mPresenter.getNoteCatalog(Cons.USER_ID_INT);
+        }
     }
     @Override
     public void getNoteCatalogSucess(NoteCatalogBean bean) {
