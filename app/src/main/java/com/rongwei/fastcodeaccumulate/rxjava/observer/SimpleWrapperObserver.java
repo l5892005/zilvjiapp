@@ -66,7 +66,9 @@ public abstract class SimpleWrapperObserver<T> implements Observer<BaseResultWra
         } else if (code == Cons.REQUEST_TOKEN_TIMEOUT) {
             //token失效
             tokenTimeout(message);
-        } else {
+        } else if (code ==Cons.INTENT_BIND_PHONE_REQUEST){
+            onFailed(message);
+        }else{
             onFailed(message);
         }
     }

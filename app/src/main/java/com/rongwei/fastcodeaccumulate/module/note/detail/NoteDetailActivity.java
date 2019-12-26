@@ -3,6 +3,7 @@ package com.rongwei.fastcodeaccumulate.module.note.detail;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,11 +16,21 @@ import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.Cons;
 import com.rongwei.fastcodeaccumulate.R;
 import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
+import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
+import com.rongwei.fastcodeaccumulate.data.event.EventTag;
+import com.rongwei.fastcodeaccumulate.data.event.MessageEvent;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerNoteDetailComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.NoteDetailModule;
 import com.rongwei.fastcodeaccumulate.module.base.ToolbarActivity;
+import com.rongwei.fastcodeaccumulate.module.note.edit.NoteEditeDetailActivity;
 import com.rongwei.fastcodeaccumulate.utils.DateUtils;
 import com.rongwei.fastcodeaccumulate.utils.StringUtils;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -66,11 +77,31 @@ public class NoteDetailActivity extends ToolbarActivity implements NoteDetailCon
     @Override
     protected void initData() {
         nid = getIntent().getIntExtra("nid", 0);
+
+
     }
 
     @Override
     protected void initView() {
         super.initView();
+        floatbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserBean user = AndroidApplication.getInstance().getUser();
+                NoteEditeDetailActivity.start(mContext,user.getUid(),nid);
+            }
+        });
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
+        rvList.setLayoutManager(linearLayoutManager);
+        baseQuickAdapter = new BaseQuickAdapter<PersionNoteListBean.DataBean, BaseViewHolder>(R.layout.note_detail_item, dataBeans) {
+            @Override
+            protected void convert(BaseViewHolder helper, PersionNoteListBean.DataBean item) {
+                helper.setText(R.id.tv_title, item.getSubtitle());
+                helper.setText(R.id.tv_content, item.getNotecontent());
+                helper.setText(R.id.tv_time, DateUtils.formatChatTime(Long.parseLong(item.getCreateTime())));
+            }
+        };
+        rvList.setAdapter(baseQuickAdapter);
     }
 
     @Override
@@ -81,23 +112,31 @@ public class NoteDetailActivity extends ToolbarActivity implements NoteDetailCon
     @Override
     protected void loadData() {
         if (nid != 0) {
-            mPresenter.getNoteListCatalog(Cons.USER_ID_INT, nid);
+            UserBean user = AndroidApplication.getInstance().getUser();
+            mPresenter.getNoteListCatalog(user.getUid(), nid);
         }
     }
+    private List<PersionNoteListBean.DataBean> dataBeans=new ArrayList<>();
 
     @Override
     public void getCardDataSucess(PersionNoteListBean bean) {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
-        rvList.setLayoutManager(linearLayoutManager);
-        baseQuickAdapter = new BaseQuickAdapter<PersionNoteListBean.DataBean, BaseViewHolder>(R.layout.note_detail_item, bean.getData()) {
-            @Override
-            protected void convert(BaseViewHolder helper, PersionNoteListBean.DataBean item) {
-                helper.setText(R.id.tv_title, item.getSubtitle());
-                helper.setText(R.id.tv_content, item.getNotecontent());
-                helper.setText(R.id.tv_time, DateUtils.formatChatTime(Long.parseLong(item.getCreateTime())));
+        dataBeans.clear();
+        dataBeans.addAll(bean.getData());
+        baseQuickAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected boolean enableEventBus() {
+        return true;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(MessageEvent event) {
+        if (event != null) {
+            if ( EventTag.addmessage.equals(event.getEventTag())) {
+                loadData();
             }
-        };
-        rvList.setAdapter(baseQuickAdapter);
+        }
     }
 
 }

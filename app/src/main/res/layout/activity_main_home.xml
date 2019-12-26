@@ -20,7 +20,7 @@
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:bb_activeTabColor="@color/bg_indicator_red"
+        app:bb_activeTabColor="@color/colorPrimary"
         android:layout_alignParentBottom="true"
         app:bb_tabXmlResource="@xml/bottombar_tabs" />
 </LinearLayout>

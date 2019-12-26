@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:background="@drawable/bg_color_fff_cor_10"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="请给卡片取一个名字" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_10"
+            android:textSize="@dimen/sp_14"
+            android:background="@drawable/bt_commont_gray_rec_col_bg"
+            android:hint="例如：跑步，早起等" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="请给卡片选一个图标" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_20"
+            android:gravity="center"
+            android:background="@drawable/bt_commont_stroke_cor_bg"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="@string/submit"/>
+    </LinearLayout>
+
+</LinearLayout>

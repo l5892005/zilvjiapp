@@ -15,9 +15,9 @@ public interface HomeContract {
 
     interface Presenter extends IBasePresenter {
         void getMemoData(String userId);
-        void getCardData(String userId);
         void getCardDataToDay(String userId);
         void setCardTodayData(String userId,int order,int isCard);
+        void setMemoInfo(int userId,String info);
     }
 
 }

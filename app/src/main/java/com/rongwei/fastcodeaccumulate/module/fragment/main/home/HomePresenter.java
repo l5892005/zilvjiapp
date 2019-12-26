@@ -34,16 +34,11 @@ public class HomePresenter implements HomeContract.Presenter {
         });
     }
 
-    @Override
-    public void getCardData(String userId) {
-        mRepository.getCardData(userId).compose(mHomeView.initNetLifecycler()).subscribe(new SimpleWrapperObserver<UserCardsBean>(mHomeView) {
-            @Override
-            public void onSuccess(UserCardsBean data) {
-                //mHomeView.getCardDataSucess(data);
-            }
-        });
-    }
 
+    /**
+     * 获取每天打卡
+     * @param userId
+     */
     @Override
     public void getCardDataToDay(String userId) {
         mRepository.getCardDataToDay(userId).compose(mHomeView.initNetLifecycler()).subscribe(new SimpleWrapperObserver<UserCardsToDayBean>(mHomeView) {
@@ -54,14 +49,34 @@ public class HomePresenter implements HomeContract.Presenter {
         });
     }
 
+    /**
+     * 去打卡
+     * @param userId
+     * @param order
+     * @param isCard
+     */
     @Override
     public void setCardTodayData(String userId, int order, int isCard) {
         mRepository.setCardTodayData(userId,order,isCard).compose(mHomeView.initNetLifecycler()).subscribe(new SimpleWrapperObserver<String>(mHomeView) {
             @Override
             public void onSuccess(String data) {
-               // mHomeView.getCardDataSucess(data);
+                mHomeView.toastSucc("打卡成功");
                 mHomeView.setStatusSucess(userId,order,isCard);
-               // mHomeView.toastAlert(data);
+            }
+        });
+    }
+
+    /**
+     * 设置每日便签
+     * @param userId
+     * @param info
+     */
+    @Override
+    public void setMemoInfo(int userId, String info) {
+        mRepository.setMemoInfo(userId,info).compose(mHomeView.initNetLifecycler()).subscribe(new SimpleWrapperObserver<MemoBean>(mHomeView) {
+            @Override
+            public void onSuccess(MemoBean data) {
+                mHomeView.getAllDataSucess(data);
             }
         });
     }

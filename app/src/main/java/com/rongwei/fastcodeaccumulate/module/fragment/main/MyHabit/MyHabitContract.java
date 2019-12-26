@@ -14,6 +14,7 @@ public interface MyHabitContract {
 
     interface Presenter extends IBasePresenter {
         void getNoteCatalog(int uid);
+        void setNoteType(int uid,String name,int ispri);
 
     }
 

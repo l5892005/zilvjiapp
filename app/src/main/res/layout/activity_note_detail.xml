@@ -21,7 +21,7 @@
         app:elevation="6dp"
         android:clickable="true"
         app:borderWidth="0dp"
-        android:backgroundTint="@color/card_color_f9b"
+        android:backgroundTint="@color/colorPrimaryDark"
         app:rippleColor="#0097a7"
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"

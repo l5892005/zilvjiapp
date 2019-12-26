@@ -8,9 +8,9 @@
         <tab
             id="@+id/tab_thow"
             icon="@drawable/thow"
-            title="日常笔记" />
+            title="我的记录" />
         <tab
             id="@+id/tab_three"
             icon="@drawable/three"
-            title="理财工具" />
+            title="记账设置" />
 </tabs>

@@ -3,6 +3,7 @@ package com.rongwei.fastcodeaccumulate.data.source;
 
 
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
+import com.rongwei.fastcodeaccumulate.data.bean.CardBean;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
@@ -10,6 +11,7 @@ import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
+import com.rongwei.fastcodeaccumulate.data.bean.VersionBean;
 import com.rongwei.fastcodeaccumulate.data.bean.WxLoginBean;
 import com.rongwei.fastcodeaccumulate.data.param.InserFastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.param.LoginParam;
@@ -84,8 +86,8 @@ public class Repository implements DataSource {
         return mRemoteDataSource.getMemoData(userId).compose(this.<BaseResultWrapper<MemoBean>>initNetworkThread());
     }
 
-    public Observable<BaseResultWrapper<UserCardsBean>> getCardData(String userId) {
-        return mRemoteDataSource.getCardData(userId).compose(this.<BaseResultWrapper<UserCardsBean>>initNetworkThread());
+    public Observable<BaseResultWrapper<CardBean>> getCardData(String userId) {
+        return mRemoteDataSource.getCardData(userId).compose(this.<BaseResultWrapper<CardBean>>initNetworkThread());
     }
 
     public Observable<BaseResultWrapper<UserCardsToDayBean>> getCardDataToDay(String userId) {
@@ -107,6 +109,40 @@ public class Repository implements DataSource {
     public Observable<BaseResultWrapper<UserBean>> setLogin(String account, String pwd) {
         return mRemoteDataSource.setLogin(account,pwd).compose(this.<BaseResultWrapper<UserBean>>initNetworkThread());
     }
+
+    public Observable<BaseResultWrapper<UserBean>> setRegister(String account, String pwd) {
+        return mRemoteDataSource.setRegister(account,pwd).compose(this.<BaseResultWrapper<UserBean>>initNetworkThread());
+    }
+
+    public Observable<BaseResultWrapper<MemoBean>> setMemoInfo(int userId, String info) {
+        return mRemoteDataSource.setMemoInfo(userId,info).compose(this.<BaseResultWrapper<MemoBean>>initNetworkThread());
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<NoteCatalogBean>> setNoteType(int uid, String name,int ispri) {
+        return mRemoteDataSource.setNoteType(uid,name,ispri).compose(this.<BaseResultWrapper<NoteCatalogBean>>initNetworkThread());
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<PersionNoteListBean>> getSetListCatalog(int uid, int nid, String title, String info) {
+        return mRemoteDataSource.getSetListCatalog(uid,nid,title,info).compose(this.<BaseResultWrapper<PersionNoteListBean>>initNetworkThread());
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<CardBean>> AddCardType(String userId, String name, String imageName, String colorBg) {
+        return mRemoteDataSource.AddCardType(userId,name,imageName,colorBg).compose(this.<BaseResultWrapper<CardBean>>initNetworkThread());
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<CardBean>> setReModeCard(String userId, String cid, String name, String imageName, String colorBg) {
+        return mRemoteDataSource.setReModeCard(userId,cid,name,imageName,colorBg).compose(this.<BaseResultWrapper<CardBean>>initNetworkThread());
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<VersionBean>> getVersionCode() {
+        return mRemoteDataSource.getVersionCode().compose(this.<BaseResultWrapper<VersionBean>>initNetworkThread());
+    }
+
   /*
 
     @Override

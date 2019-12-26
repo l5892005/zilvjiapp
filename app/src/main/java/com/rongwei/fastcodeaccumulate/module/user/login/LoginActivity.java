@@ -3,6 +3,8 @@ package com.rongwei.fastcodeaccumulate.module.user.login;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,10 +12,15 @@ import android.widget.TextView;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.R;
 import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
+import com.rongwei.fastcodeaccumulate.data.event.EventTag;
+import com.rongwei.fastcodeaccumulate.data.event.MessageEvent;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerLoginComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.LoginModule;
 import com.rongwei.fastcodeaccumulate.module.base.ToolbarActivity;
 import com.rongwei.fastcodeaccumulate.module.main.main.MainHomeActivity;
+import com.rongwei.fastcodeaccumulate.module.user.register.RegisterActivity;
+
+import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Inject;
 
@@ -46,6 +53,19 @@ public class LoginActivity extends ToolbarActivity implements LoginContract.View
                 .inject(this);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_message_news, menu);
+        final MenuItem item = menu.findItem(R.id.tv_message_dot);
+        View actionView = item.getActionView();
+        actionView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RegisterActivity.start(mContext);
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     protected int attachLayoutRes() {
@@ -55,12 +75,15 @@ public class LoginActivity extends ToolbarActivity implements LoginContract.View
 
     @Override
     protected void initData() {
-
+        if (AndroidApplication.getInstance().getUser()!=null) {
+            MainHomeActivity.start(mContext);
+            finish();
+        }
     }
 
     @Override
     protected void initView() {
-
+        super.initView();
         tvLogin.setOnClickListener(this);
 
     }
@@ -87,7 +110,10 @@ public class LoginActivity extends ToolbarActivity implements LoginContract.View
 
     @Override
     public void setLoginSuceess(UserBean string) {
+        toastSucc("登录成功"+string.getNick());
         AndroidApplication.getInstance().setUser(string);
+        EventBus.getDefault().post(new MessageEvent(EventTag.loginSucess,null));
         MainHomeActivity.start(this);
+        finish();
     }
 }

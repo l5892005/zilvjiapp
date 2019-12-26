@@ -1,33 +1,33 @@
 package com.rongwei.fastcodeaccumulate.module.fragment.main.home;
 
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
-import com.rongwei.fastcodeaccumulate.Cons;
 import com.rongwei.fastcodeaccumulate.R;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
+import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
+import com.rongwei.fastcodeaccumulate.data.event.EventTag;
+import com.rongwei.fastcodeaccumulate.data.event.MessageEvent;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerHomeComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.HomeModule;
 import com.rongwei.fastcodeaccumulate.module.base.BaseFragment;
-import com.rongwei.fastcodeaccumulate.utils.SizeUtils;
-import com.rongwei.fastcodeaccumulate.weight.RecycleViewDivider;
+import com.rongwei.fastcodeaccumulate.module.dialog.InputMemoDialogFragment;
+import com.rongwei.fastcodeaccumulate.module.user.login.LoginActivity;
+import com.rongwei.fastcodeaccumulate.utils.ImgPngUtils;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -80,26 +80,38 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
     @Override
     protected void loadData() {
         if (isLogin){
-            mPresenter.getMemoData(Cons.USER_ID);
-            mPresenter.getCardDataToDay(Cons.USER_ID);
+            UserBean user = AndroidApplication.getInstance().getUser();
+            mPresenter.getMemoData(user.getUid()+"");
+            mPresenter.getCardDataToDay(user.getUid()+"");
         }
     }
 
     @Override
     public void getAllDataSucess(MemoBean memoBean) {
-        String contentVery = memoBean.getContentVery();
-        String[] split = contentVery.split("\\|");
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < split.length; i++) {
-            builder.append(i + 1 + ". " + split[i] + "\n");
+        if (memoBean!=null){
+            String contentVery = memoBean.getContentVery();
+            tvMemo.setText(contentVery);
+        }else{
+            tvMemo.setText("你还未记录每日便签，请点击输入！");
         }
-        tvMemo.setText(builder);
-
+        tvMemo.setOnClickListener(v -> {
+            InputMemoDialogFragment inputPageFragment = InputMemoDialogFragment.newInstance(tvMemo.getText().toString(), InputMemoDialogFragment.MEMO);
+            mActivity.addFragment(inputPageFragment);
+            inputPageFragment.setSubmitClickListener(v1 -> {
+                String s = inputPageFragment.getEtPage().getText().toString();
+                UserBean user = AndroidApplication.getInstance().getUser();
+                mActivity.removeFragment(inputPageFragment);
+                if (user!=null){
+                    mPresenter.setMemoInfo(user.getUid(),s);
+                }else{
+                    LoginActivity.start(mActivity);
+                }
+            });
+        });
     }
 
     @Override
     public void getCardDataSucess(UserCardsToDayBean bean) {
-        //List<UserCardsBean.DataBean> data = bean.getData();
         String imageName = bean.getImageName();
         String cardName = bean.getCardName();
         String imageCode = bean.getImgCode();
@@ -108,7 +120,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
         String[] splitCardName = cardName.split("\\|");
         String[] splitImageCode = imageCode.split("\\|");
         String[] splitImageCount = imageCount.split("\\|");
-       // String[] splitCardStauts = bean.getCodeCard().split("\\|");
         char[] splitImageStatus = bean.getCodeCard().toCharArray();
         userCardsBeans = new ArrayList<>();
         for (int i = 0; i < splitImageCode.length; i++) {
@@ -120,18 +131,12 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
             userCardsBean.setImgstatic(splitImageStatus[i]+"");
             userCardsBeans.add(userCardsBean);
         }
-        Log.d("test", userCardsBeans.toString());
         TypedArray array = getResources().obtainTypedArray(R.array.img_list_ids);
         baseQuickAdapter = new BaseQuickAdapter<UserCardsBean, BaseViewHolder>(R.layout.user_cards_item, userCardsBeans) {
             @Override
             protected void convert(BaseViewHolder helper, UserCardsBean item) {
                 String[] stringArray = getResources().getStringArray(R.array.img_list);
-                for (int i = 0; i < stringArray.length; i++) {
-                    if (stringArray[i].equals(item.getImgName())) {
-                        helper.setImageResource(R.id.iv_img, array.getResourceId(i, 0));
-                        break;
-                    }
-                }
+                helper.setImageResource(R.id.iv_img, ImgPngUtils.getInstance(mContext).getPngName(item.getImgName()));
                 if ("0".equals(item.getImgstatic())) {
                     helper.getView(R.id.iv_img).setBackgroundResource(R.drawable.card_bg_gray_cir);
                     helper.getView(R.id.iv_img).setEnabled(true);
@@ -166,7 +171,22 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
         if (userCardsBeans!=null && userCardsBeans.get(position)!=null){
-            mPresenter.setCardTodayData(Cons.USER_ID,position+1,1);
+            UserBean user = AndroidApplication.getInstance().getUser();
+            mPresenter.setCardTodayData(user.getUid()+"",position+1,1);
+        }
+    }
+
+    @Override
+    protected boolean enableEventBus() {
+        return true;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(MessageEvent event) {
+        if (event != null) {
+            if (EventTag.loginSucess.equals(event.getEventTag())) {
+                loadData();
+            }
         }
     }
 }

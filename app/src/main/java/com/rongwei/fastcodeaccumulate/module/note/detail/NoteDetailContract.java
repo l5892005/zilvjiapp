@@ -12,6 +12,7 @@ public interface NoteDetailContract {
 
     interface Presenter extends IBasePresenter {
         void getNoteListCatalog(int uid,int nid);
+
     }
 
 }

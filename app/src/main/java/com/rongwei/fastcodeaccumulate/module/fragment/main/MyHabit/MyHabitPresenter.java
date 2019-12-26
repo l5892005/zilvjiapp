@@ -30,4 +30,20 @@ public class MyHabitPresenter implements MyHabitContract.Presenter {
     }
 
 
+    /**
+     * 设置笔记名字
+     * @param uid
+     * @param name
+     */
+    @Override
+    public void setNoteType(int uid, String name,int ispri) {
+        mRepository.setNoteType(uid,name,ispri).compose(mMyHabitView.initNetLifecycler()).subscribe(new SimpleWrapperObserver<NoteCatalogBean>(mMyHabitView) {
+            @Override
+            public void onSuccess(NoteCatalogBean data) {
+                mMyHabitView.getNoteCatalogSucess(data);
+            }
+        });
+    }
+
+
 }

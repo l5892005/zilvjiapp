@@ -6,6 +6,8 @@ package com.rongwei.fastcodeaccumulate;
  */
 public class Cons {
     public static final int OS_ANDROID = 1;
+    public static final int EFFECTIVE_NUM = 1;
+
 
     //请求码
     public static final int REQUEST_SUCCESS = 200;
@@ -32,6 +34,4 @@ public class Cons {
 
     //Intent result code
     public static final int INTENT_RESULT_OK = 10086;
-    public static final String USER_ID = "1";
-    public static final int USER_ID_INT = 1;
 }

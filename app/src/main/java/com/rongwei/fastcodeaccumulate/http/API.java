@@ -2,6 +2,7 @@ package com.rongwei.fastcodeaccumulate.http;
 
 
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
+import com.rongwei.fastcodeaccumulate.data.bean.CardBean;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
@@ -9,6 +10,7 @@ import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
+import com.rongwei.fastcodeaccumulate.data.bean.VersionBean;
 
 import java.util.Map;
 import java.util.function.DoubleUnaryOperator;
@@ -40,7 +42,7 @@ public interface API {
         Observable<BaseResultWrapper<MemoBean>> getMemoData(@Query("userId") String userId);
 
         @GET("v1/get_cards_status")
-        Observable<BaseResultWrapper<UserCardsBean>> getCardData(@Query("userId") String userId);
+        Observable<BaseResultWrapper<CardBean>> getCardData(@Query("userId") String userId);
 
         @GET("v1/get_cards")
         Observable<BaseResultWrapper<UserCardsToDayBean>> getCardDataToDay(@Query("userId") String userId);
@@ -56,6 +58,27 @@ public interface API {
 
         @GET("v1/login")
         Observable<BaseResultWrapper<UserBean>> setLogin(@Query("userId")String userId,@Query("pwd") String pwd);
+
+        @GET("v1/register_user")
+        Observable<BaseResultWrapper<UserBean>> setRegister(@Query("userId")String account, @Query("pwd") String pwd);
+
+        @GET("v1/set_memo")
+        Observable<BaseResultWrapper<MemoBean>> setMemoInfo(@Query("userId")int userId, @Query("info") String info);
+
+        @GET("v1/set_note_catalog")
+        Observable<BaseResultWrapper<NoteCatalogBean>> setNoteType(@Query("userId")int uid,@Query("info") String name,@Query("isPri") int isPri);
+
+        @GET("v1/set_note_list")
+        Observable<BaseResultWrapper<PersionNoteListBean>> getSetListCatalog(@Query("userId")int uid, @Query("nid")int nid,@Query("title") String title, @Query("content") String content);
+
+        @GET("v1/add_cards_type")
+        Observable<BaseResultWrapper<CardBean>> AddCardType(@Query("userId")String userId, @Query("name")String name,@Query("imageName") String imageName, @Query("colorBg")String colorBg);
+
+        @GET("v1/update_cards_type")
+        Observable<BaseResultWrapper<CardBean>> setReModeCard(@Query("userId")String userId,@Query("cid")String cid, @Query("name")String name,@Query("imageName") String imageName, @Query("colorBg")String colorBg);
+
+        @GET("v1/get_version")
+        Observable<BaseResultWrapper<VersionBean>> getVersionCode();
     }
 
     interface UserApi {

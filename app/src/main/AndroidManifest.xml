@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.rongwei.fastcodeaccumulate">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 友盟配置 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- Required -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:name=".AndroidApplication"
@@ -12,17 +22,37 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".module.user.login.LoginActivity" />
-        <activity android:name=".module.note.detail.NoteDetailActivity" />
-        <activity android:name=".module.main.main.MainHomeActivity">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".module.tool.setting.CardSettingActivity" />
+        <activity android:name=".module.note.edit.NoteEditeDetailActivity" />
+        <activity android:name=".module.user.register.RegisterActivity" />
+        <activity android:name=".module.user.login.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".module.note.detail.NoteDetailActivity" />
+        <activity android:name=".module.main.main.MainHomeActivity">
+        </activity>
         <activity android:name=".module.home.addfast.AddFastCodeActivity" />
+        <activity
+            android:name=".module.InstallActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.rongwei.zilvji.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"
+                tools:replace="name,resource" />
+        </provider>
     </application>
 
 </manifest>

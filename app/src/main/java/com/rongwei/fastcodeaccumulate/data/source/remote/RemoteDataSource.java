@@ -3,6 +3,7 @@ package com.rongwei.fastcodeaccumulate.data.source.remote;
 
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
+import com.rongwei.fastcodeaccumulate.data.bean.CardBean;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
@@ -10,12 +11,14 @@ import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
+import com.rongwei.fastcodeaccumulate.data.bean.VersionBean;
 import com.rongwei.fastcodeaccumulate.data.param.InserFastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.source.DataSource;
 import com.rongwei.fastcodeaccumulate.http.API;
 import com.rongwei.fastcodeaccumulate.http.config.URLConfig;
 import com.rongwei.fastcodeaccumulate.http.converter.CustomGsonConverterFactory;
 import com.rongwei.fastcodeaccumulate.http.intercept.HeaderParamIntercept;
+import com.rongwei.fastcodeaccumulate.utils.StringUtils;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.DoubleUnaryOperator;
@@ -96,9 +99,11 @@ public class RemoteDataSource implements DataSource {
         return retrofit.create(API.BaseApi.class).getNoteCatalog(uid);
     }
 
-    public Observable<BaseResultWrapper<UserCardsBean>> getCardData(String userId) {
-        return retrofit.create(API.BaseApi.class).getCardData(userId);
+    @Override
+    public Observable<BaseResultWrapper<CardBean>> getCardData(String uid) {
+        return retrofit.create(API.BaseApi.class).getCardData(uid);
     }
+
 
     public Observable<BaseResultWrapper<UserCardsToDayBean>> getCardDataToDay(String userId) {
         return retrofit.create(API.BaseApi.class).getCardDataToDay(userId);
@@ -115,6 +120,40 @@ public class RemoteDataSource implements DataSource {
     @Override
     public Observable<BaseResultWrapper<UserBean>> setLogin(String account, String pwd) {
         return retrofit.create(API.BaseApi.class).setLogin(account,pwd);
+    }
+
+    public Observable<BaseResultWrapper<UserBean>> setRegister(String account, String pwd) {
+        return retrofit.create(API.BaseApi.class).setRegister(account,pwd);
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<MemoBean>> setMemoInfo(int userId, String info) {
+        return retrofit.create(API.BaseApi.class).setMemoInfo(userId,info);
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<NoteCatalogBean>> setNoteType(int uid, String name,int ispri) {
+        return retrofit.create(API.BaseApi.class).setNoteType(uid,name,ispri);
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<PersionNoteListBean>> getSetListCatalog(int uid, int nid, String title, String info) {
+        return retrofit.create(API.BaseApi.class).getSetListCatalog(uid,nid,title,info);
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<CardBean>> AddCardType(String userId, String name, String imageName, String colorBg) {
+        return retrofit.create(API.BaseApi.class).AddCardType(userId,name,imageName,colorBg);
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<CardBean>> setReModeCard(String userId, String cid, String name, String imageName, String colorBg) {
+        return retrofit.create(API.BaseApi.class).setReModeCard(userId,cid,name,imageName,colorBg);
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<VersionBean>> getVersionCode() {
+        return retrofit.create(API.BaseApi.class).getVersionCode();
     }
 
   /*  @Override

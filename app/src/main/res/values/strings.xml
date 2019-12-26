@@ -19,9 +19,21 @@
     <string name="my_habit" translatable="false">我的习惯</string>
     <string name="my_note" translatable="false">我的笔记</string>
     <string name="note_detail" translatable="false">笔记详情</string>
-    <string name="login_string" translatable="false">自律鸡登陆</string>
+    <string name="login_string" translatable="false">自律鸡</string>
     <string name="hint_login_account" translatable="false">请输入帐号</string>
     <string name="hint_login_pwd" translatable="false">请输入密码</string>
     <string name="longin_name" translatable="false">登陆</string>
+    <string name="register_name" translatable="false">注册</string>
+    <string name="note_hint_title_samll" translatable="false">请输入小节标题</string>
+    <string name="note_hint_content_big" translatable="false">请输入小节文本</string>
     <string name="account_pwd_error" translatable="false">账号密码起码要6位以上</string>
+    <string name="submit" translatable="false">提交</string>
+    <string name="note_my" translatable="false">我的记录</string>
+    <string name="add_note_list" translatable="false">添加笔记</string>
+    <string name="title_lenght_error">标题不能多余200个字</string>
+    <string name="content_lenght_error">内容不能大于一千字</string>
+    <string name="data_transfs_error">数据传输问题，最好退出重进</string>
+    <string name="card_setting" >打卡设置</string>
+    <string name="mytool" >记账设置</string>
+    <string name="add_card" >+ 添加一个自定义习惯卡片</string>
 </resources>

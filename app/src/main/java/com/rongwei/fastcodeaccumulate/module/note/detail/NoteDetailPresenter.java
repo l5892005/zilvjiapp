@@ -24,4 +24,6 @@ public class NoteDetailPresenter implements NoteDetailContract.Presenter {
             }
         });
     }
+
+
 }

@@ -1,70 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#d2b576</color>
-    <color name="colorPrimaryDark">#d2b576</color>
-    <color name="colorAccent">#d2b576</color>
+    <color name="colorPrimary">#8dc63f</color>
+    <color name="colorPrimaryDark">#39b54a</color>
+    <color name="colorAccent">#0081ff</color>
+
+    <color name="card_color_5a2">#5a2807</color>
     <color name="white">#ffffffff</color>
-    <color name="main_color">#d2b576</color>
+    <color name="divider_e0">#e0e0e0</color>
+    <color name="card_color_f5b">#F5B5A7</color>
     <color name="start_color">#8E354A</color>
-
-    <color name="text_1a">#1a1a1a</color>
-
-    <color name="bg_indicator_red">#ff0000</color>
-    <color name="bg_indicator_grad">#ffffff</color>
-
-    <!--规定好的颜色，后期删除上面的颜色-->
-    <!--下面是临时填充的颜色，后期删除-->
-    <color name="temp_color">#8E354A</color>
-
-    <color name="bg_color_f2f">#f2f2f2</color>
-
-    <color name="bg_color_d2b">#d2b576</color>
-    <color name="bg_color_d1b">#d1b47a</color>
-
-    <color name="bg_color_ccc">#CCCCCC</color>
-
-    <color name="bg_color_fff">#ffffff</color>
-    <color name="bg_color_fff_70">#B3ffffff</color>
-    <color name="bg_color_f7f_50">#80f7f7f7</color>
-
-
-    <color name="messge_fc1">#fc1618</color>
-
-
-
-
-    <color name="text_bottom">#333333</color>
-
-    <color name="text_000">#1a1a1a</color>
-    <color name="text_666">#666666</color>
-    <color name="text_010">#010101</color>
-    <color name="text_999">#999999</color>
-    <color name="text_ffe">#fffffe</color>
-    <color name="text_fff">#ffffff</color>
-    <color name="text_1a1">#1A1A1A</color>
-    <color name="text_eb2">#EB202B</color>
-    <color name="text_fc1">#fc1618</color>
-    <color name="text_808">#808080</color>
-    <color name="text_color_dd5">#dd5335</color>
+    <color name="divide_e0">#e0e0e0</color>
+    <color name="divide_ef">#efefef</color>
     <color name="view_bg_dd5">#dd5335</color>
 
-
-
-    <color name="text_tab_sel">#333333</color>
+    <!--字体-->
     <color name="text_333">#333333</color>
-    <color name="text_tab_unsel">#808080</color>
-    <color name="text_de">#dedede</color>
+    <color name="text_000">#1a1a1a</color>
+    <color name="text_666">#666666</color>
+    <color name="text_999">#999999</color>
+    <color name="text_eb2">#EB202B</color>
 
-    <color name="divide_ef">#efefef</color>
-    <color name="divide_e0">#e0e0e0</color>
-    <color name="fragment_bg">#f2f2f2</color>
-
-    <color name="divider_e0">#e0e0e0</color>
-
-    <color name="card_color_dd5">#dd5335</color>
-    <color name="card_color_f9b">#f9bf5b</color>
-    <color name="card_color_5a2">#5a2807</color>
-
-
+    <color name="text_1a">#1a1a1a</color>
+    <color name="bg_color_f7f_50">#80f7f7f7</color>
+    <color name="bg_color_f2f">#f2f2f2</color>
+    <color name="bg_color_d1b">#d1b47a</color>
 
 </resources>
