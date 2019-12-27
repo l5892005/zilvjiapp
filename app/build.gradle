@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.rongwei.fastcodeaccumulate"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -81,7 +81,75 @@ android {
             buildConfigField "String", "BaseUrl", "\"http://106.12.68.88:8080/\""
         }
     }
+    productFlavors {
 
+        qh360 {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "360"]
+        }
+        ali {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "ali"]
+        }
+        baidu {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+        }
+        guanwang {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "guanwang"]
+        }
+        huawei {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"]
+        }
+        juchuan {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "juchuan"]
+        }
+        lenovo {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "lenovo"]
+        }
+        meizu {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu"]
+        }
+        oppo {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "oppo"]
+        }
+        other {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "other"]
+        }
+        other1 {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "other1"]
+        }
+        other2 {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "other2"]
+        }
+        samsung {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "samsung"]
+        }
+        tencent {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "tencent"]
+        }
+        vivo {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "vivo"]
+        }
+        xiaomi {
+            dimension "mark"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+        }
+
+
+    }
     repositories {
         flatDir {
             dirs 'libs'
@@ -141,4 +209,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
 
     api 'com.roughike:bottom-bar:2.3.1'
+    compile  'com.umeng.umsdk:analytics:8.0.0'
+    compile  'com.umeng.umsdk:common:2.0.0'
 }

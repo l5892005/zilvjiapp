@@ -33,7 +33,7 @@
         android:id="@+id/et_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_margin="@dimen/dp_10"
         android:paddingLeft="@dimen/dp_10"
         android:maxLines="200"
         android:background="@drawable/bt_commont_stroke_rec_bg"
@@ -51,8 +51,9 @@
         android:gravity="top"
         android:padding="@dimen/dp_10"
         android:inputType="textMultiLine"
+        android:layout_margin="@dimen/dp_10"
         android:maxLength="1000"
-        android:hint="@string/note_hint_title_samll" />
+        android:hint="@string/note_hint_content_big" />
 
     <TextView
         android:id="@+id/tv_sub"

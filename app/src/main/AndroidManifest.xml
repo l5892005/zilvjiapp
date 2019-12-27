@@ -3,14 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rongwei.fastcodeaccumulate">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 友盟配置 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- Required -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
@@ -24,6 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}" />
         <activity android:name=".module.tool.setting.CardSettingActivity" />
         <activity android:name=".module.note.edit.NoteEditeDetailActivity" />
         <activity android:name=".module.user.register.RegisterActivity" />
@@ -44,7 +45,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.rongwei.zilvji.provider"
+            android:authorities="com.rongwei.fastcodeaccumulate.fileProvider"
             android:exported="false"
             android:grantUriPermissions="true"
             tools:replace="android:authorities">

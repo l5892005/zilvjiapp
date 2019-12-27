@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#8dc63f</color>
+    <color name="colorPrimary">#00B06A</color>
+   <!-- #8dc63f-->
     <color name="colorPrimaryDark">#39b54a</color>
     <color name="colorAccent">#0081ff</color>
 
@@ -12,7 +13,7 @@
     <color name="divide_e0">#e0e0e0</color>
     <color name="divide_ef">#efefef</color>
     <color name="view_bg_dd5">#dd5335</color>
-
+    <color name="color_cad">#CADAB4</color>
     <!--字体-->
     <color name="text_333">#333333</color>
     <color name="text_000">#1a1a1a</color>
@@ -25,4 +26,24 @@
     <color name="bg_color_f2f">#f2f2f2</color>
     <color name="bg_color_d1b">#d1b47a</color>
 
+    <color name="color_00be">#00BE9E</color>
+    <color name="color_00d">#00D896</color>
+    <color name="color_009">#0097D5</color>
+    <color name="color_00b5">#00B5A0</color>
+    <color name="color_a555">#A555B0</color>
+    <color name="color_2b47">#2B475B</color>
+    <color name="color_00b0">#00B06A</color>
+    <color name="color_007e">#007EB3</color>
+    <color name="color_993e">#993EA8</color>
+    <color name="color_243b">#243B4D</color>
+    <color name="color_f9c7">#F9C74B</color>
+    <color name="color_f5823">#F5823E</color>
+    <color name="color_fa4c">#FA4C48</color>
+    <color name="color_ecf0">#ECF0F1</color>
+    <color name="color_92a6">#92A6A6</color>
+    <color name="color_ff9f">#FF9F40</color>
+    <color name="color_e255">#E25527</color>
+    <color name="color_d138">#D13834</color>
+    <color name="color_bfc4">#BFC4C8</color>
+    <color name="color_7c8d">#7C8D8E</color>
 </resources>

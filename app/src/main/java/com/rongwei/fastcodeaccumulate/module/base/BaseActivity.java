@@ -22,6 +22,7 @@ import com.rongwei.fastcodeaccumulate.utils.LogUtils;
 import com.rongwei.fastcodeaccumulate.utils.ToastUtil;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -218,13 +219,13 @@ public abstract class BaseActivity extends RxAppCompatActivity implements IBaseV
     @Override
     protected void onResume() {
         super.onResume();
-      //  MobclickAgent.onResume(this);
+        MobclickAgent.onResume(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-      //  MobclickAgent.onPause(this);
+        MobclickAgent.onPause(this);
     }
 
     @Override

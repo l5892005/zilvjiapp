@@ -16,6 +16,7 @@ import com.rongwei.fastcodeaccumulate.utils.ActivityListManager;
 import com.rongwei.fastcodeaccumulate.utils.CacheUtils;
 import com.rongwei.fastcodeaccumulate.utils.SpUtils;
 import com.rongwei.fastcodeaccumulate.utils.toast.ToastUtils;
+import com.umeng.commonsdk.UMConfigure;
 
 import java.lang.reflect.Field;
 import java.security.SecureRandom;
@@ -84,12 +85,15 @@ public class AndroidApplication extends Application {
         }
         return mUser != null;
     }
-
+    private final static String UM="5e05a5b40cafb2b48f00081d";
     private void initUMeng() {
-        //初始化友盟
-    /*    UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, "");
-        PlatformConfig.setWeixin(AppKey.WX_APP_ID, AppKey.WX_APP_ID);
-        UMConfigure.setLogEnabled(isDebug);*/
+        /**
+         * 注意: 即使您已经在AndroidManifest.xml中配置过appkey和channel值，也需要在App代码中调
+         * 用初始化接口（如需要使用AndroidManifest.xml中配置好的appkey和channel值，
+         * UMConfigure.init调用中appkey和channel参数请置为null）。
+         */
+        UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, "");
+        UMConfigure.setLogEnabled(BuildConfig.isDebug);
     }
 
     @Override
