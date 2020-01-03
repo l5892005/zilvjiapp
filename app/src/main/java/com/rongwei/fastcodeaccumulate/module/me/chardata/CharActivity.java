@@ -37,7 +37,6 @@ public class CharActivity extends BaseActivity implements CharContract.View {
     CharContract.Presenter mPresenter;
     @BindView(R.id.chart)
     BarChart chart;
-    private List<Entry> entries;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, CharActivity.class);
@@ -66,7 +65,6 @@ public class CharActivity extends BaseActivity implements CharContract.View {
 
     }
 
-    private float[] dataObjects = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
     @Override
     protected void initView() {
@@ -76,33 +74,6 @@ public class CharActivity extends BaseActivity implements CharContract.View {
 
     @Override
     protected void loadData() {
-        entries = new ArrayList<Entry>();
-
-        for (float data : dataObjects) {
-            entries.add(new Entry(data, data));
-        }
-
-      /*线性的
-        LineDataSet dataSet = new LineDataSet(entries, "Label"); // 添加数据
-        dataSet.setColor(getResources().getColor(R.color.color_00d));
-        dataSet.setValueTextColor(R.color.text_333); // 自定义数据样式
-        LineData lineData = new LineData(dataSet);
-        chart.setData(lineData);*/
-       /*柱状的图
-        List<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(0f, 30f));
-        entries.add(new BarEntry(1f, 80f));
-        entries.add(new BarEntry(2f, 60f));
-        entries.add(new BarEntry(3f, 50f));
-        // 跳过第五个
-        entries.add(new BarEntry(5f, 70f));
-        entries.add(new BarEntry(6f, 60f));
-        BarDataSet set = new BarDataSet(entries, "BarDataSet");
-
-        BarData data = new BarData(set);
-        data.setBarWidth(0.9f); // 设置数据条的宽度
-        chart.setData(data);
-        chart.invalidate(); // 刷新*/
         float randomMultiplier = 2 ;
         List<BarEntry> entriesGroup1 = new ArrayList<>();
         entriesGroup1.add(new BarEntry(1, (float) (Math.random() * randomMultiplier)));
@@ -125,7 +96,7 @@ public class CharActivity extends BaseActivity implements CharContract.View {
 
         float groupSpace = 0.06f;//群组间的间隔
         float barSpace = 0.02f; // 每一个柱状条间隔
-        float barWidth = 0.40f; // 每一个柱状条的宽度
+        float barWidth = 0.38f; // 每一个柱状条的宽度
 
 // (0.02 + 0.45) * 2 + 0.06 = 1.00 -> 总共合起来还是1f
         BarData data = new BarData(set1, set2); //设置组数据
