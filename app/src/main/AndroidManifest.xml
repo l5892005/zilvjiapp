@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rongwei.fastcodeaccumulate">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -22,27 +21,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="${UMENG_CHANNEL_VALUE}" />
-        <activity android:name=".module.tool.setting.CardSettingActivity" />
-        <activity android:name=".module.note.edit.NoteEditeDetailActivity" />
-        <activity android:name=".module.user.register.RegisterActivity" />
-        <activity android:name=".module.user.login.LoginActivity" >
+        <activity android:name=".module.me.chardata.CharActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}" />
+
+        <activity android:name=".module.tool.setting.CardSettingActivity" />
+        <activity android:name=".module.note.edit.NoteEditeDetailActivity" />
+        <activity android:name=".module.user.register.RegisterActivity" />
+        <activity android:name=".module.user.login.LoginActivity"></activity>
         <activity android:name=".module.note.detail.NoteDetailActivity" />
-        <activity android:name=".module.main.main.MainHomeActivity">
-        </activity>
+        <activity android:name=".module.main.main.MainHomeActivity"></activity>
         <activity android:name=".module.home.addfast.AddFastCodeActivity" />
         <activity
             android:name=".module.InstallActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.rongwei.fastcodeaccumulate.fileProvider"
