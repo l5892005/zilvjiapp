@@ -24,6 +24,8 @@ import com.rongwei.fastcodeaccumulate.injector.components.DaggerMyToolComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.MyToolModule;
 import com.rongwei.fastcodeaccumulate.module.base.BaseFragment;
 import com.rongwei.fastcodeaccumulate.module.base.ToolbarActivity;
+import com.rongwei.fastcodeaccumulate.module.me.money.lend.LendRebtActivity;
+import com.rongwei.fastcodeaccumulate.module.me.money.total.TotalMoneyActivityActivity;
 import com.rongwei.fastcodeaccumulate.module.me.stock.StockActivity;
 import com.rongwei.fastcodeaccumulate.module.tool.setting.CardSettingActivity;
 import com.rongwei.fastcodeaccumulate.module.user.login.LoginActivity;
@@ -83,25 +85,25 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
     protected void initView() {
 
         //tvTitle.setText("我的理财");
-        tvCode.setText("V"+ BuildConfig.VERSION_CODE);
+        tvCode.setText("V" + BuildConfig.VERSION_CODE);
     }
 
 
     @Override
     protected void loadData() {
         strings = Arrays.asList(getResources().getStringArray(R.array.tools));
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(mActivity,3);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(mActivity, 3);
         TypedArray array = getResources().obtainTypedArray(R.array.img_list_ids);
         int length = array.length();
-        int endlenght=length- strings.size();
+        int endlenght = length - strings.size();
         rvList.setLayoutManager(gridLayoutManager);
         baseQuickAdapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.user_tool_item, strings) {
             @Override
             protected void convert(BaseViewHolder helper, String item) {
-                helper.setImageResource(R.id.iv_img, array.getResourceId(endlenght-1+helper.getPosition(), 0));
+                helper.setImageResource(R.id.iv_img, array.getResourceId(endlenght - 1 + helper.getPosition(), 0));
                 helper.setText(R.id.tv_sub, item);
                 helper.addOnClickListener(R.id.ll_item);
-                if (helper.getPosition()<Cons.EFFECTIVE_NUM){
+                if (helper.getPosition() < Cons.EFFECTIVE_NUM) {
                     helper.getView(R.id.ll_item).setBackgroundResource(R.drawable.card_bg_light_rec);
                 }
             }
@@ -110,9 +112,9 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
         baseQuickAdapter.setOnItemChildClickListener(this);
         inflate = LayoutInflater.from(mActivity).inflate(R.layout.item_head_tool, null);
         inflate.findViewById(R.id.iv_img).setOnClickListener(this);
-        if (AndroidApplication.getInstance().isLogin()){
+        if (AndroidApplication.getInstance().isLogin()) {
             user = AndroidApplication.getInstance().getUser();
-            if (user !=null){
+            if (user != null) {
                 TextView tvUser = inflate.findViewById(R.id.tv_user);
                 tvUser.setText(user.getNick());
             }
@@ -124,26 +126,33 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
         switch (strings.get(position)) {
             case "打卡设置":
-                if (user!=null){
+                if (user != null) {
                     CardSettingActivity.start(mActivity);
-                }else {
+                } else {
                     LoginActivity.start(mActivity);
                 }
                 break;
             case "股票转账":
-                StockActivity.start(getContext());
+                StockActivity.start(mActivity);
+                break;
+            case "日常理财":
+                TotalMoneyActivityActivity.start(mActivity);
+                break;
+            case "借还账本":
+                LendRebtActivity.start(mActivity);
                 break;
 
         }
     }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.iv_img:
                 if (!AndroidApplication.getInstance().isLogin()) {
                     LoginActivity.start(mActivity);
                 }
-            break;
+                break;
         }
     }
 
@@ -157,7 +166,7 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
         if (event != null) {
             if (EventTag.loginSucess.equals(event.getEventTag())) {
                 UserBean user = AndroidApplication.getInstance().getUser();
-                if (user!=null){
+                if (user != null) {
                     TextView tvUser = inflate.findViewById(R.id.tv_user);
                     tvUser.setText(user.getNick());
                 }

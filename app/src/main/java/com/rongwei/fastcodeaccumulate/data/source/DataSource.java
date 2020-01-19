@@ -6,6 +6,7 @@ import android.icu.util.VersionInfo;
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
 import com.rongwei.fastcodeaccumulate.data.bean.CardBean;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
+import com.rongwei.fastcodeaccumulate.data.bean.LeadDebotBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
 import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
@@ -59,6 +60,10 @@ public interface DataSource {
     Observable<BaseResultWrapper<StockNoteBean>> getStockMoney(int uid);
 
     Observable<BaseResultWrapper<String>> putStockMoney(int uid, int take_out, int money, int put_in, String remark_money, String stock_code);
+
+    Observable<BaseResultWrapper<String>> putLendRebt(int uid, int money, int mstate, String mremark, String mname, int nowstatu);
+
+    Observable<BaseResultWrapper<LeadDebotBean>>  getLendRebt(int uid);
 
 
 

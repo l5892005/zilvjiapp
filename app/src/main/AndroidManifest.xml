@@ -21,8 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".module.me.money.lend.LendRebtActivity" />
+        <activity android:name=".module.me.money.total.TotalMoneyActivityActivity" />
         <activity android:name=".module.me.stock.StockActivity" />
-        <activity android:name=".module.me.chardata.CharActivity"></activity>
+        <activity android:name=".module.me.chardata.CharActivity" />
 
         <meta-data
             android:name="UMENG_CHANNEL"

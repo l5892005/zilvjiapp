@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="是否平行操作"/>
+        android:text="是否保持本金不变"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"

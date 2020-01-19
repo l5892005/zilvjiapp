@@ -4,6 +4,7 @@ package com.rongwei.fastcodeaccumulate.http;
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
 import com.rongwei.fastcodeaccumulate.data.bean.CardBean;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
+import com.rongwei.fastcodeaccumulate.data.bean.LeadDebotBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
 import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
@@ -86,6 +87,12 @@ public interface API {
 
         @GET("v1/set_stock_list")
         Observable<BaseResultWrapper<String>> putStockMoney(@Query("uid")int uid,@Query("take_out") int take_out,@Query("money") int money,@Query("put_in") int put_in,@Query("remark_money") String remark_money,@Query("stock_code") String stock_code);
+
+        @GET("v1/put_lend_debt")
+        Observable<BaseResultWrapper<String>> putLendRebt(@Query("uid")int uid, @Query("money")int money, @Query("mstate")int mstate,@Query("mremark") String mremark, @Query("mname")String mname, @Query("nowstatu")int nowstatu);
+
+        @GET("v1/get_lend")
+        Observable<BaseResultWrapper<LeadDebotBean>> getLendRebt(@Query("uid")int uid);
     }
 
     interface UserApi {

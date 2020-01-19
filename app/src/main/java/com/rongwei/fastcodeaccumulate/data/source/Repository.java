@@ -5,6 +5,7 @@ package com.rongwei.fastcodeaccumulate.data.source;
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
 import com.rongwei.fastcodeaccumulate.data.bean.CardBean;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
+import com.rongwei.fastcodeaccumulate.data.bean.LeadDebotBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
 import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
@@ -152,6 +153,16 @@ public class Repository implements DataSource {
     @Override
     public Observable<BaseResultWrapper<String>> putStockMoney(int uid, int take_out, int money, int put_in, String remark_money, String stock_code) {
         return mRemoteDataSource.putStockMoney(uid,take_out,money,put_in,remark_money,stock_code).compose(this.<BaseResultWrapper<String>>initNetworkThread());
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<String>> putLendRebt(int uid, int money, int mstate, String mremark, String mname, int nowstatu) {
+        return  mRemoteDataSource.putLendRebt(uid,money,mstate,mremark,mname,nowstatu).compose(this.<BaseResultWrapper<String>>initNetworkThread());
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<LeadDebotBean>> getLendRebt(int uid) {
+        return mRemoteDataSource.getLendRebt(uid).compose(this.<BaseResultWrapper<LeadDebotBean>>initNetworkThread());
     }
 
   /*
