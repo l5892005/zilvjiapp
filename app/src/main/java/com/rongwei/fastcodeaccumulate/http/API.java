@@ -7,6 +7,7 @@ import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
 import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
+import com.rongwei.fastcodeaccumulate.data.bean.StockNoteBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
@@ -79,6 +80,12 @@ public interface API {
 
         @GET("v1/get_version")
         Observable<BaseResultWrapper<VersionBean>> getVersionCode();
+
+        @GET("v1/get_stock_note")
+        Observable<BaseResultWrapper<StockNoteBean>> getStockMoney(@Query("userId") int uid);
+
+        @GET("v1/set_stock_list")
+        Observable<BaseResultWrapper<String>> putStockMoney(@Query("uid")int uid,@Query("take_out") int take_out,@Query("money") int money,@Query("put_in") int put_in,@Query("remark_money") String remark_money,@Query("stock_code") String stock_code);
     }
 
     interface UserApi {

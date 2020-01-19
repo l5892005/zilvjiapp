@@ -8,6 +8,7 @@ import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
 import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
+import com.rongwei.fastcodeaccumulate.data.bean.StockNoteBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
@@ -154,6 +155,16 @@ public class RemoteDataSource implements DataSource {
     @Override
     public Observable<BaseResultWrapper<VersionBean>> getVersionCode() {
         return retrofit.create(API.BaseApi.class).getVersionCode();
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<StockNoteBean>> getStockMoney(int uid) {
+        return retrofit.create(API.BaseApi.class).getStockMoney(uid);
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<String>> putStockMoney(int uid, int take_out, int money, int put_in, String remark_money, String stock_code) {
+        return retrofit.create(API.BaseApi.class).putStockMoney(uid,take_out,money,put_in,remark_money,stock_code);
     }
 
   /*  @Override

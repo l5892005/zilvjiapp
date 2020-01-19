@@ -23,6 +23,8 @@ import com.rongwei.fastcodeaccumulate.data.event.MessageEvent;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerMyToolComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.MyToolModule;
 import com.rongwei.fastcodeaccumulate.module.base.BaseFragment;
+import com.rongwei.fastcodeaccumulate.module.base.ToolbarActivity;
+import com.rongwei.fastcodeaccumulate.module.me.stock.StockActivity;
 import com.rongwei.fastcodeaccumulate.module.tool.setting.CardSettingActivity;
 import com.rongwei.fastcodeaccumulate.module.user.login.LoginActivity;
 import com.rongwei.fastcodeaccumulate.utils.StringUtils;
@@ -79,9 +81,11 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
 
     @Override
     protected void initView() {
+
         //tvTitle.setText("我的理财");
         tvCode.setText("V"+ BuildConfig.VERSION_CODE);
     }
+
 
     @Override
     protected void loadData() {
@@ -125,6 +129,9 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
                 }else {
                     LoginActivity.start(mActivity);
                 }
+                break;
+            case "股票转账":
+                StockActivity.start(getContext());
                 break;
 
         }

@@ -21,12 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".module.me.chardata.CharActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".module.me.stock.StockActivity" />
+        <activity android:name=".module.me.chardata.CharActivity"></activity>
 
         <meta-data
             android:name="UMENG_CHANNEL"
@@ -35,9 +31,15 @@
         <activity android:name=".module.tool.setting.CardSettingActivity" />
         <activity android:name=".module.note.edit.NoteEditeDetailActivity" />
         <activity android:name=".module.user.register.RegisterActivity" />
-        <activity android:name=".module.user.login.LoginActivity"></activity>
+        <activity android:name=".module.user.login.LoginActivity" />
         <activity android:name=".module.note.detail.NoteDetailActivity" />
-        <activity android:name=".module.main.main.MainHomeActivity"></activity>
+        <activity android:name=".module.main.main.MainHomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".module.home.addfast.AddFastCodeActivity" />
         <activity
             android:name=".module.InstallActivity"

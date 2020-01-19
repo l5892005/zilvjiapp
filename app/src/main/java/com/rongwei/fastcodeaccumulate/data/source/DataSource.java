@@ -9,6 +9,7 @@ import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
 import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
+import com.rongwei.fastcodeaccumulate.data.bean.StockNoteBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.VersionBean;
 import com.rongwei.fastcodeaccumulate.data.bean.WxLoginBean;
@@ -54,6 +55,10 @@ public interface DataSource {
     Observable<BaseResultWrapper<CardBean>> setReModeCard(String userId, String cid, String name, String imageName, String colorBg);
 
     Observable<BaseResultWrapper<VersionBean>> getVersionCode();
+
+    Observable<BaseResultWrapper<StockNoteBean>> getStockMoney(int uid);
+
+    Observable<BaseResultWrapper<String>> putStockMoney(int uid, int take_out, int money, int put_in, String remark_money, String stock_code);
 
 
 

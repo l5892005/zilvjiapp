@@ -96,7 +96,7 @@ public class CharActivity extends BaseActivity implements CharContract.View {
 
         float groupSpace = 0.06f;//群组间的间隔
         float barSpace = 0.02f; // 每一个柱状条间隔
-        float barWidth = 0.38f; // 每一个柱状条的宽度
+        float barWidth = 0.45f; // 每一个柱状条的宽度
 
 // (0.02 + 0.45) * 2 + 0.06 = 1.00 -> 总共合起来还是1f
         BarData data = new BarData(set1, set2); //设置组数据
@@ -104,11 +104,14 @@ public class CharActivity extends BaseActivity implements CharContract.View {
         // specify the width each bar should have
         chart.getBarData().setBarWidth(barWidth);
         // restrict the x-axis range
-        float startYear=1980;
+        float startYear=12;
         chart.getXAxis().setAxisMinimum(startYear);
+        //chart.getXAxis().setDrawGridLines(false);//是否显示竖直标尺线
         // barData.getGroupWith(...) is a helper that calculates the width each group needs based on the provided parameters
-        chart.getXAxis().setAxisMaximum(startYear + chart.getBarData().getGroupWidth(groupSpace, barSpace)*entriesGroup2.size() );
-        chart.groupBars(1980f, groupSpace, barSpace);
+        //chart.getXAxis().setAxisMaximum(startYear + chart.getBarData().getGroupWidth(groupSpace, barSpace)*entriesGroup2.size() );
+        chart.getXAxis().setAxisMaximum(1+entriesGroup2.size() );
+        chart.getXAxis().setAxisMinimum(0);
+        chart.groupBars(startYear, groupSpace, barSpace);
         chart.setDragEnabled(true);
         chart.invalidate();
     }

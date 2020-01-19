@@ -8,6 +8,7 @@ import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.NoteCatalogBean;
 import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
+import com.rongwei.fastcodeaccumulate.data.bean.StockNoteBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
@@ -141,6 +142,16 @@ public class Repository implements DataSource {
     @Override
     public Observable<BaseResultWrapper<VersionBean>> getVersionCode() {
         return mRemoteDataSource.getVersionCode().compose(this.<BaseResultWrapper<VersionBean>>initNetworkThread());
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<StockNoteBean>> getStockMoney(int uid) {
+        return mRemoteDataSource.getStockMoney(uid).compose(this.<BaseResultWrapper<StockNoteBean>>initNetworkThread());
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<String>> putStockMoney(int uid, int take_out, int money, int put_in, String remark_money, String stock_code) {
+        return mRemoteDataSource.putStockMoney(uid,take_out,money,put_in,remark_money,stock_code).compose(this.<BaseResultWrapper<String>>initNetworkThread());
     }
 
   /*
