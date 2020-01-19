@@ -18,6 +18,7 @@ import com.rongwei.fastcodeaccumulate.data.bean.LeadDebotBean;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerLendRebtComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.LendRebtModule;
 import com.rongwei.fastcodeaccumulate.module.base.BaseActivity;
+import com.rongwei.fastcodeaccumulate.module.base.ToolbarActivity;
 import com.rongwei.fastcodeaccumulate.module.fragment.money.LendFragment;
 import com.rongwei.fastcodeaccumulate.weight.ColorFlipPagerTitleView;
 
@@ -39,7 +40,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LendRebtActivity extends BaseActivity implements LendRebtContract.View {
+public class LendRebtActivity extends ToolbarActivity implements LendRebtContract.View {
 
     @Inject
     LendRebtContract.Presenter mPresenter;
@@ -80,8 +81,14 @@ public class LendRebtActivity extends BaseActivity implements LendRebtContract.V
     private int index=0;
     @Override
     protected void initView() {
-
+        super.initView();
     }
+
+    @Override
+    protected String setToolbarTitle() {
+        return "借还账本";
+    }
+
     @Override
     protected void loadData() {
         mPresenter.getLendRebt(AndroidApplication.getInstance().getUser().getUid());
@@ -90,7 +97,18 @@ public class LendRebtActivity extends BaseActivity implements LendRebtContract.V
 
     @Override
     public void getLeadDebotSucess(List<LeadDebotBean.DataBean> beans) {
-        fragmentList.add(LendFragment.newInstance((ArrayList<LeadDebotBean.DataBean>) beans));
+        ArrayList<LeadDebotBean.DataBean> lendBeans=new ArrayList<>();
+        ArrayList<LeadDebotBean.DataBean> rebotBeans=new ArrayList<>();
+        for (LeadDebotBean.DataBean bean : beans) {
+            int mstate = bean.getMstate();
+            if (mstate==0){
+                lendBeans.add(bean);
+            }else{
+                rebotBeans.add(bean) ;
+            }
+        }
+        fragmentList.add(LendFragment.newInstance((ArrayList<LeadDebotBean.DataBean>) lendBeans));
+        fragmentList.add(LendFragment.newInstance((ArrayList<LeadDebotBean.DataBean>) rebotBeans));
         viewPager.setAdapter(new ComFragmentAdapter(getSupportFragmentManager(), fragmentList));
         viewPager.setOffscreenPageLimit(10);
         initMagicIndicator();
