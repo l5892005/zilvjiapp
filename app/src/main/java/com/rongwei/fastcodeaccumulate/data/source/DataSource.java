@@ -65,6 +65,8 @@ public interface DataSource {
 
     Observable<BaseResultWrapper<LeadDebotBean>>  getLendRebt(int uid);
 
+    Observable<BaseResultWrapper<String>> getLendRebtStauts(int mid);
+
 
 
 

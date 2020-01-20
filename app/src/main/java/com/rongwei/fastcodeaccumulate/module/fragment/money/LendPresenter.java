@@ -12,4 +12,5 @@ public class LendPresenter implements LendContract.Presenter {
         this.mLendView = NullUtils.checkNotNull(view);
         this.mRepository = NullUtils.checkNotNull(mRepository);
     }
+
 }

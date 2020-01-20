@@ -111,6 +111,7 @@ public class StockActivity extends ToolbarActivity implements StockContract.View
         }
         StockNoteBean.DataBean bean=new StockNoteBean.DataBean();
         bean.setTakeout(totle+"");
+        bean.setTotalmoney(beans.get(beans.size()-1).getTotalmoney());
         beans.add(bean);
         table.setData(beans);
 

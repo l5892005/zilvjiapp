@@ -93,18 +93,9 @@ public interface API {
 
         @GET("v1/get_lend")
         Observable<BaseResultWrapper<LeadDebotBean>> getLendRebt(@Query("uid")int uid);
+
+        @GET("v1/set_lend_status")
+        Observable<BaseResultWrapper<String>> getLendRebtStauts(@Query("mid")int mid);
     }
-
-    interface UserApi {
-      /*  @Headers("atype:login")
-        @GET("/v1/wx/auth")
-        Observable<BaseResultWrapper<WxLoginBean>> loginWx(@Query("code") String code);
-
-        @GET("/v1/wx/bind")
-        Observable<BaseResultWrapper<WxBindBean>> bindWX(@Query("code") String code);*/
-
-
-    }
-
 
 }

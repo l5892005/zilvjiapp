@@ -13,6 +13,7 @@ public interface LendRebtContract {
 
     interface Presenter extends IBasePresenter {
         void getLendRebt(int uid);
+        void getLendRebtStauts(int mid);
         void putLendRebt(int uid,int money,int mstate,String mremark,String mname,int nowstatu);
     }
 

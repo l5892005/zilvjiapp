@@ -178,6 +178,11 @@ public class RemoteDataSource implements DataSource {
         return retrofit.create(API.BaseApi.class).getLendRebt(uid);
     }
 
+    @Override
+    public Observable<BaseResultWrapper<String>> getLendRebtStauts(int mid) {
+        return retrofit.create(API.BaseApi.class).getLendRebtStauts(mid);
+    }
+
   /*  @Override
     public Observable<BaseResultWrapper<DeviceBean>> getDeviceId() {
         return retrofit.create(API.BaseApi.class).getDeviceId();

@@ -1,19 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/srl_refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <include layout="@layout/include_toolbar"/>
-    <net.lucode.hackware.magicindicator.MagicIndicator
-        android:id="@+id/magic_indicator"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:background="@color/white" />
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:background="@color/white"
-        android:layout_height="match_parent"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_toolbar" />
+
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:id="@+id/magic_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="@color/white" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_weight="1"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入人名" />
+
+            <EditText
+                android:id="@+id/et_money"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入金额"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/et_remark"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入备注" />
+
+            <TextView
+                android:id="@+id/tv_add"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="借钱"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -165,6 +165,11 @@ public class Repository implements DataSource {
         return mRemoteDataSource.getLendRebt(uid).compose(this.<BaseResultWrapper<LeadDebotBean>>initNetworkThread());
     }
 
+    @Override
+    public Observable<BaseResultWrapper<String>> getLendRebtStauts(int mid) {
+        return mRemoteDataSource.getLendRebtStauts(mid).compose(this.<BaseResultWrapper<String>>initNetworkThread());
+    }
+
   /*
 
     @Override

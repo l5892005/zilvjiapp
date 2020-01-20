@@ -9,6 +9,8 @@ public interface LendContract {
     }
 
     interface Presenter extends IBasePresenter {
+
+
     }
 
 }
