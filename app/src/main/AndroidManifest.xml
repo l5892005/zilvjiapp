@@ -43,6 +43,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".module.home.addfast.AddFastCodeActivity" />
+
         <activity
             android:name=".module.InstallActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"

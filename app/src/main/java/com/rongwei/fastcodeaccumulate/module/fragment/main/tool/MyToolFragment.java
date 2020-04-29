@@ -141,6 +141,9 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
             case "借还账本":
                 LendRebtActivity.start(mActivity);
                 break;
+            case "经验总结":
+               // ExperienceActivity.Companion.start(mActivity);
+                break;
 
         }
     }
