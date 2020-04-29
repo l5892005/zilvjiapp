@@ -3,6 +3,7 @@ package com.rongwei.fastcodeaccumulate.http;
 
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
 import com.rongwei.fastcodeaccumulate.data.bean.CardBean;
+import com.rongwei.fastcodeaccumulate.data.bean.ExperienceBean;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.LeadDebotBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
@@ -18,6 +19,7 @@ import java.util.Map;
 import java.util.function.DoubleUnaryOperator;
 
 import io.reactivex.Observable;
+import kotlin.Unit;
 import okhttp3.MultipartBody;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -96,6 +98,10 @@ public interface API {
 
         @GET("v1/set_lend_status")
         Observable<BaseResultWrapper<String>> getLendRebtStauts(@Query("mid")int mid);
+
+
+        @GET("v1/get_experience_info")
+        Observable<BaseResultWrapper<ExperienceBean>> getExperienceInfo(@Query("userId")int uid);
     }
 
 }

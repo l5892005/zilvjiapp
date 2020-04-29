@@ -37,4 +37,5 @@
     <string name="mytool" >记账设置</string>
     <string name="add_card" >+ 添加一个自定义习惯卡片</string>
     <string name="stock_reconrd">"股票记录"</string>
+    <string name="experience_text">"人生经验惨如狗"</string>
 </resources>

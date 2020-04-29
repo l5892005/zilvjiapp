@@ -5,6 +5,7 @@ import android.icu.util.VersionInfo;
 
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
 import com.rongwei.fastcodeaccumulate.data.bean.CardBean;
+import com.rongwei.fastcodeaccumulate.data.bean.ExperienceBean;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.LeadDebotBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
@@ -18,11 +19,14 @@ import com.rongwei.fastcodeaccumulate.data.param.InserFastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.param.LoginParam;
 import com.rongwei.fastcodeaccumulate.utils.StringUtils;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.File;
 import java.util.Map;
 import java.util.function.DoubleUnaryOperator;
 
 import io.reactivex.Observable;
+import kotlin.Unit;
 
 /**
  * M层接口
@@ -66,6 +70,8 @@ public interface DataSource {
     Observable<BaseResultWrapper<LeadDebotBean>>  getLendRebt(int uid);
 
     Observable<BaseResultWrapper<String>> getLendRebtStauts(int mid);
+
+    Observable<BaseResultWrapper<ExperienceBean>> getExperienceInfo(@NotNull int uid);
 
 
 

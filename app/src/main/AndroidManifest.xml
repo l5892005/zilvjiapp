@@ -21,6 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".module.me.experience.ExperienceActivity" />
         <activity android:name=".module.me.money.lend.LendRebtActivity" />
         <activity android:name=".module.me.money.total.TotalMoneyActivityActivity" />
         <activity android:name=".module.me.stock.StockActivity" />
@@ -43,7 +44,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".module.home.addfast.AddFastCodeActivity" />
-
         <activity
             android:name=".module.InstallActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"

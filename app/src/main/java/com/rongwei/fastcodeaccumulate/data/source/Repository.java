@@ -4,6 +4,7 @@ package com.rongwei.fastcodeaccumulate.data.source;
 
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
 import com.rongwei.fastcodeaccumulate.data.bean.CardBean;
+import com.rongwei.fastcodeaccumulate.data.bean.ExperienceBean;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.LeadDebotBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
@@ -19,6 +20,8 @@ import com.rongwei.fastcodeaccumulate.data.param.InserFastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.param.LoginParam;
 import com.rongwei.fastcodeaccumulate.data.source.local.LocalDataSource;
 import com.rongwei.fastcodeaccumulate.data.source.remote.RemoteDataSource;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.Map;
@@ -168,6 +171,11 @@ public class Repository implements DataSource {
     @Override
     public Observable<BaseResultWrapper<String>> getLendRebtStauts(int mid) {
         return mRemoteDataSource.getLendRebtStauts(mid).compose(this.<BaseResultWrapper<String>>initNetworkThread());
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<ExperienceBean>> getExperienceInfo(@NotNull int uid) {
+        return mRemoteDataSource.getExperienceInfo(uid).compose(this.<BaseResultWrapper<ExperienceBean>>initNetworkThread());
     }
 
   /*

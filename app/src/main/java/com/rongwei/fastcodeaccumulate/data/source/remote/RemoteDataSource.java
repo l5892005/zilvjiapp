@@ -4,6 +4,7 @@ package com.rongwei.fastcodeaccumulate.data.source.remote;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
 import com.rongwei.fastcodeaccumulate.data.bean.CardBean;
+import com.rongwei.fastcodeaccumulate.data.bean.ExperienceBean;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.bean.LeadDebotBean;
 import com.rongwei.fastcodeaccumulate.data.bean.MemoBean;
@@ -22,10 +23,13 @@ import com.rongwei.fastcodeaccumulate.http.converter.CustomGsonConverterFactory;
 import com.rongwei.fastcodeaccumulate.http.intercept.HeaderParamIntercept;
 import com.rongwei.fastcodeaccumulate.utils.StringUtils;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.concurrent.TimeUnit;
 import java.util.function.DoubleUnaryOperator;
 
 import io.reactivex.Observable;
+import kotlin.Unit;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -181,6 +185,11 @@ public class RemoteDataSource implements DataSource {
     @Override
     public Observable<BaseResultWrapper<String>> getLendRebtStauts(int mid) {
         return retrofit.create(API.BaseApi.class).getLendRebtStauts(mid);
+    }
+
+    @Override
+    public Observable<BaseResultWrapper<ExperienceBean>> getExperienceInfo(@NotNull int uid) {
+        return retrofit.create(API.BaseApi.class).getExperienceInfo(uid);
     }
 
   /*  @Override

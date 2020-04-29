@@ -24,6 +24,7 @@ import com.rongwei.fastcodeaccumulate.injector.components.DaggerMyToolComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.MyToolModule;
 import com.rongwei.fastcodeaccumulate.module.base.BaseFragment;
 import com.rongwei.fastcodeaccumulate.module.base.ToolbarActivity;
+import com.rongwei.fastcodeaccumulate.module.me.experience.ExperienceActivity;
 import com.rongwei.fastcodeaccumulate.module.me.money.lend.LendRebtActivity;
 import com.rongwei.fastcodeaccumulate.module.me.money.total.TotalMoneyActivityActivity;
 import com.rongwei.fastcodeaccumulate.module.me.stock.StockActivity;
@@ -142,7 +143,7 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
                 LendRebtActivity.start(mActivity);
                 break;
             case "经验总结":
-               // ExperienceActivity.Companion.start(mActivity);
+                ExperienceActivity.start(mActivity);
                 break;
 
         }

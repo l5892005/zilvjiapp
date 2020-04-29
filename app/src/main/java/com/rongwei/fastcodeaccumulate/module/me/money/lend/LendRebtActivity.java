@@ -178,7 +178,7 @@ public class LendRebtActivity extends ToolbarActivity implements LendRebtContrac
             public void onPageScrollStateChanged(int state) {
             }
         });
-
+//        srlRefresh.setEnabled(enableRefresh());
        /* srlRefresh.setEnabled(enableRefresh());
         srlRefresh.setColorSchemeColors(getResources().getColor(R.color.color_d138));
         srlRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -189,7 +189,7 @@ public class LendRebtActivity extends ToolbarActivity implements LendRebtContrac
         });*/
     }
     protected boolean enableRefresh() {
-        return true;
+        return false;
     }
 
     @Override
