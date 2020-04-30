@@ -8,4 +8,5 @@
     <item name="tab_index" type="id"/>
     <item name="tab_thow" type="id"/>
     <item name="tab_three" type="id"/>
+    <item name="tab_four" type="id"/>
 </resources>

@@ -28,6 +28,7 @@ import com.rongwei.fastcodeaccumulate.module.dialog.VersionUpdateDialogFragment;
 import com.rongwei.fastcodeaccumulate.module.fragment.main.MyHabit.MyHabitFragment;
 import com.rongwei.fastcodeaccumulate.module.fragment.main.home.HomeFragment;
 import com.rongwei.fastcodeaccumulate.module.fragment.main.tool.MyToolFragment;
+import com.rongwei.fastcodeaccumulate.module.fragment.main.very.VeryDayFragment;
 import com.rongwei.fastcodeaccumulate.utils.EncryptUtils;
 import com.rongwei.fastcodeaccumulate.utils.FileUtils;
 import com.rongwei.fastcodeaccumulate.utils.HttpUtils;
@@ -93,16 +94,19 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
     public static final int TAB_ONE = 0;
     public static final int TAB_TWO = 1;
     public static final int TAB_THREE = 2;
+    public static final int TAB_FOUR = 3;
 
     @Override
     protected void initView() {
-        mFragments = new BaseFragment[3];
+        mFragments = new BaseFragment[4];
         HomeFragment homeFragment = HomeFragment.newInstance();
         MyHabitFragment ployFragment = MyHabitFragment.newInstance();
         MyToolFragment myToolFragment = MyToolFragment.newInstance();
+        VeryDayFragment mVeryDayFragment = VeryDayFragment.newInstance();
         mFragments[0] = homeFragment;
         mFragments[1] = ployFragment;
         mFragments[2] = myToolFragment;
+        mFragments[3] = mVeryDayFragment;
         bottomBar.setDefaultTabPosition(TAB_ONE);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
@@ -116,6 +120,9 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
                         break;
                     case R.id.tab_three:
                         selectedFragment(TAB_THREE);
+                        break;
+                    case R.id.tab_four:
+                        selectedFragment(TAB_FOUR);
                         break;
                 }
             }
@@ -174,7 +181,7 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
         progressDialog.setCancelable(false);
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
-        if (!fileUrl.endsWith(".apk")){
+        if (!fileUrl.endsWith(".apk")) {
             toastFailed("更新包有问题!");
             progressDialog.dismiss();
             return;
@@ -207,6 +214,7 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
             @Override
             public void onSubscribe(Disposable d) {
             }
+
             @Override
             public void onNext(Integer progress) {
                 progressDialog.setProgress(progress);
@@ -215,14 +223,14 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
             @Override
             public void onError(Throwable e) {
                 ToastUtil.toastBackgoround("网络错误");
-                if (progressDialog !=null && progressDialog.isShowing()){
+                if (progressDialog != null && progressDialog.isShowing()) {
                     progressDialog.dismiss();
                 }
             }
 
             @Override
             public void onComplete() {
-                if (progressDialog !=null && progressDialog.isShowing()){
+                if (progressDialog != null && progressDialog.isShowing()) {
                     progressDialog.dismiss();
                 }
                 installApk(destFile);
@@ -230,6 +238,7 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
         });
 
     }
+
     private void installApk(final File file) {
         InstallActivity.start(this, file);
     }

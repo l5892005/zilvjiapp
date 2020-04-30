@@ -15,6 +15,7 @@ import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
 import com.rongwei.fastcodeaccumulate.data.bean.VersionBean;
+import com.rongwei.fastcodeaccumulate.data.bean.VideoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.WxLoginBean;
 import com.rongwei.fastcodeaccumulate.data.param.InserFastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.param.LoginParam;
@@ -176,6 +177,16 @@ public class Repository implements DataSource {
     @Override
     public Observable<BaseResultWrapper<ExperienceBean>> getExperienceInfo(@NotNull int uid) {
         return mRemoteDataSource.getExperienceInfo(uid).compose(this.<BaseResultWrapper<ExperienceBean>>initNetworkThread());
+    }
+
+    @Override
+    public Observable<VideoBean> getRequestHomeData(int num) {
+        return mRemoteDataSource.getRequestHomeData(num).compose(this.<VideoBean>initNetworkThread());
+    }
+
+    @Override
+    public Observable<VideoBean> loadMoreData(@NotNull String date, @NotNull String num) {
+        return mRemoteDataSource.loadMoreData(date,num).compose(this.<VideoBean>initNetworkThread());
     }
 
   /*

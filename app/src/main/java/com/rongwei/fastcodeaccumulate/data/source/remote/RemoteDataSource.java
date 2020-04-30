@@ -2,6 +2,8 @@ package com.rongwei.fastcodeaccumulate.data.source.remote;
 
 
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
+import com.rongwei.fastcodeaccumulate.Cons;
+import com.rongwei.fastcodeaccumulate.cons.SpKey;
 import com.rongwei.fastcodeaccumulate.data.bean.BaseResultWrapper;
 import com.rongwei.fastcodeaccumulate.data.bean.CardBean;
 import com.rongwei.fastcodeaccumulate.data.bean.ExperienceBean;
@@ -15,7 +17,9 @@ import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
 import com.rongwei.fastcodeaccumulate.data.bean.VersionBean;
+import com.rongwei.fastcodeaccumulate.data.bean.VideoBean;
 import com.rongwei.fastcodeaccumulate.data.param.InserFastCodeBean;
+import com.rongwei.fastcodeaccumulate.data.source.ChangeBaseUrlInterceptor;
 import com.rongwei.fastcodeaccumulate.data.source.DataSource;
 import com.rongwei.fastcodeaccumulate.http.API;
 import com.rongwei.fastcodeaccumulate.http.config.URLConfig;
@@ -49,16 +53,19 @@ public class RemoteDataSource implements DataSource {
             //initOkHttpClient
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            ChangeBaseUrlInterceptor changeBaseUrlInterceptor = new ChangeBaseUrlInterceptor();
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
                     //.addInterceptor(new HeaderParamIntercept());
 
             if (AndroidApplication.isDebug()) {
-                builder.addInterceptor(loggingInterceptor)
+                builder.addInterceptor(changeBaseUrlInterceptor)
+                        .addInterceptor(loggingInterceptor)
                         .readTimeout(60, TimeUnit.SECONDS)
                         .writeTimeout(60, TimeUnit.SECONDS)
                         .connectTimeout(60, TimeUnit.SECONDS);
             } else {
-                builder.readTimeout(15, TimeUnit.SECONDS)
+                builder.addInterceptor(changeBaseUrlInterceptor)
+                        .readTimeout(15, TimeUnit.SECONDS)
                         .writeTimeout(15, TimeUnit.SECONDS)
                         .connectTimeout(15, TimeUnit.SECONDS);
             }
@@ -66,14 +73,13 @@ public class RemoteDataSource implements DataSource {
 
             //initRetrofit
             retrofit = new Retrofit.Builder()
-                    .baseUrl(URLConfig.BaseUrl)
+                    .baseUrl(Cons.URL)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(CustomGsonConverterFactory.create())
                     .client(builder.build())
                     .build();
         }
     }
-
     public static RemoteDataSource getInstance() {
         if (INSTANCE == null) {
             synchronized (RemoteDataSource.class) {
@@ -191,6 +197,17 @@ public class RemoteDataSource implements DataSource {
     public Observable<BaseResultWrapper<ExperienceBean>> getExperienceInfo(@NotNull int uid) {
         return retrofit.create(API.BaseApi.class).getExperienceInfo(uid);
     }
+
+    @Override
+    public Observable<VideoBean> getRequestHomeData(@NotNull int uid) {
+        return retrofit.create(API.BaseApi.class).getRequestHomeData(uid);
+    }
+
+    @Override
+    public Observable<VideoBean> loadMoreData(@NotNull String date, @NotNull String num) {
+        return retrofit.create(API.BaseApi.class).loadMoreData(date,num);
+    }
+
 
   /*  @Override
     public Observable<BaseResultWrapper<DeviceBean>> getDeviceId() {

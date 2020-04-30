@@ -13,4 +13,8 @@
             id="@+id/tab_three"
             icon="@drawable/three"
             title="记账设置" />
+        <tab
+            id="@+id/tab_four"
+            icon="@drawable/yugu"
+            title="开眼视频" />
 </tabs>

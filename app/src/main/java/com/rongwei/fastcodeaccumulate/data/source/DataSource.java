@@ -14,6 +14,7 @@ import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
 import com.rongwei.fastcodeaccumulate.data.bean.StockNoteBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.VersionBean;
+import com.rongwei.fastcodeaccumulate.data.bean.VideoBean;
 import com.rongwei.fastcodeaccumulate.data.bean.WxLoginBean;
 import com.rongwei.fastcodeaccumulate.data.param.InserFastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.param.LoginParam;
@@ -72,6 +73,10 @@ public interface DataSource {
     Observable<BaseResultWrapper<String>> getLendRebtStauts(int mid);
 
     Observable<BaseResultWrapper<ExperienceBean>> getExperienceInfo(@NotNull int uid);
+
+    Observable<VideoBean> getRequestHomeData(@NotNull int uid);
+
+    Observable<VideoBean> loadMoreData(@NotNull String date,@NotNull String num);
 
 
 

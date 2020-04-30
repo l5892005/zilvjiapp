@@ -14,6 +14,7 @@ import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
 import com.rongwei.fastcodeaccumulate.data.bean.VersionBean;
+import com.rongwei.fastcodeaccumulate.data.bean.VideoBean;
 
 import java.util.Map;
 import java.util.function.DoubleUnaryOperator;
@@ -102,6 +103,15 @@ public interface API {
 
         @GET("v1/get_experience_info")
         Observable<BaseResultWrapper<ExperienceBean>> getExperienceInfo(@Query("userId")int uid);
+
+        @Headers("domain:other")
+        @GET("/api/v2/feed?")
+        Observable<VideoBean> getRequestHomeData(@Query("num")int uid);
+
+
+        @Headers("domain:other")
+        @GET("/api/v2/feed?")
+        Observable<VideoBean> loadMoreData(@Query("date")String date , @Query("num")String num);
     }
 
 }

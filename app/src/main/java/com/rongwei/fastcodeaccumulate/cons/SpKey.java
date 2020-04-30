@@ -1,6 +1,8 @@
 package com.rongwei.fastcodeaccumulate.cons;
 
 
+import com.rongwei.fastcodeaccumulate.http.config.URLConfig;
+
 /**
  * Created by maoqi on 2018/8/3.
  */

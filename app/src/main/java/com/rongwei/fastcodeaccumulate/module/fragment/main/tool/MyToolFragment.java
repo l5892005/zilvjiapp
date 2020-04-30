@@ -147,7 +147,7 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
                 ExperienceActivity.start(mActivity);
                 break;
             case "小建议":
-                VideoDetailActivity.start(mActivity);
+               // VideoDetailActivity.start(mActivity);
                 break;
 
         }

@@ -1,5 +1,9 @@
 package com.rongwei.fastcodeaccumulate;
 
+import com.rongwei.fastcodeaccumulate.http.config.URLConfig;
+
+import org.jetbrains.annotations.Nullable;
+
 /**
  * 常量类
  * Created by maoqi on 2018/12/24.
@@ -34,4 +38,9 @@ public class Cons {
 
     //Intent result code
     public static final int INTENT_RESULT_OK = 10086;
+
+    public static String URL= URLConfig.BaseUrl;
+
+    @Nullable
+    public static final String URl_VIDEO="http://baobab.kaiyanapp.com/api/";
 }

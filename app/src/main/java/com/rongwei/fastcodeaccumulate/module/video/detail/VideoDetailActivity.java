@@ -31,9 +31,12 @@ public class VideoDetailActivity extends BaseActivity implements VideoDetailCont
     @BindView(R.id.detail_player)
     StandardGSYVideoPlayer detailPlayer;
     private OrientationUtils orientationUtils;
+    private String title="测试视频";
 
-    public static void start(Context context) {
+    public static void start(Context context,String url,String title) {
         Intent intent = new Intent(context, VideoDetailActivity.class);
+        intent.putExtra("url",url);
+        intent.putExtra("title",title);
         context.startActivity(intent);
     }
     String url ="http://baobab.kaiyanapp.com/api/v1/playUrl?vid=193008&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss";
@@ -61,7 +64,8 @@ public class VideoDetailActivity extends BaseActivity implements VideoDetailCont
 
     @Override
     protected void initView() {
-
+        url = getIntent().getStringExtra("url");
+        title = getIntent().getStringExtra("title");
     }
     private boolean isPlay;
 
@@ -82,7 +86,7 @@ public class VideoDetailActivity extends BaseActivity implements VideoDetailCont
                 .setNeedLockFull(true)
                 .setUrl(url)
                 .setCacheWithPlay(false)
-                .setVideoTitle("测试视频")
+                .setVideoTitle(title)
                 .setVideoAllCallBack(new GSYSampleCallBack() {
                     @Override
                     public void onPrepared(String url, Object... objects) {
