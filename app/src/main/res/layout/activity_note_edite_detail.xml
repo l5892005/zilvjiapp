@@ -15,18 +15,21 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="带图片下一版开发"/>
+            android:textSize="@dimen/sp_24"
+            android:text="拍照"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="大家有更好点子"
+            android:text="关键字:kotlin"
+            android:textSize="@dimen/sp_24"
+           android:onClick="onClickText"
             android:layout_weight="1" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="可以联系我开发"
+            android:text="语音输入"
             android:layout_weight="1"/>
     </LinearLayout>
     <EditText

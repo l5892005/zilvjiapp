@@ -86,21 +86,27 @@ public class NoteEditeDetailActivity extends ToolbarActivity implements NoteEdit
         tvSub.setOnClickListener(this);
 
     }
+    public  void onClickText(View view){
+
+        etContent.setText(etContent.getText()+"kotlin");
+
+    }
 
     @Override
     public void onClick(View v) {
         String title = etTitle.getText().toString();
         String content = etContent.getText().toString();
 
-        if (title.length()==0 || title.length()>200){
-            toastFailed(getResources().getString(R.string.title_lenght_error));
-            return;
-        }
-
         if (content.length()==0 || content.length()>=1000){
             toastFailed(getResources().getString(R.string.content_lenght_error));
             return;
         }
+
+        if (title.length()==0 || title.length()>200){
+            title=content.substring(0,content.length()>15?15:content.length());
+        }
+
+
         if (uid==0 || nid ==0){
             toastFailed(getResources().getString(R.string.data_transfs_error));
             return;

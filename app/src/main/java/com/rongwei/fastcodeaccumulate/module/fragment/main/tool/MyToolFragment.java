@@ -30,6 +30,7 @@ import com.rongwei.fastcodeaccumulate.module.me.money.total.TotalMoneyActivityAc
 import com.rongwei.fastcodeaccumulate.module.me.stock.StockActivity;
 import com.rongwei.fastcodeaccumulate.module.tool.setting.CardSettingActivity;
 import com.rongwei.fastcodeaccumulate.module.user.login.LoginActivity;
+import com.rongwei.fastcodeaccumulate.module.video.detail.VideoDetailActivity;
 import com.rongwei.fastcodeaccumulate.utils.StringUtils;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -144,6 +145,9 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
                 break;
             case "经验总结":
                 ExperienceActivity.start(mActivity);
+                break;
+            case "小建议":
+                VideoDetailActivity.start(mActivity);
                 break;
 
         }
