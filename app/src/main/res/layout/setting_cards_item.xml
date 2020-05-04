@@ -13,7 +13,7 @@
         android:layout_height="@dimen/dp_35"
         android:layout_marginLeft="@dimen/dp_40"
         android:layout_gravity="center_vertical"
-        android:src="@drawable/xuegao" />
+        android:src="@drawable/a1" />
 
     <TextView
         android:id="@+id/tv_name"

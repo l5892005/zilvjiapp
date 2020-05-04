@@ -6,11 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.IdRes;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
@@ -127,6 +130,7 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
                 }
             }
         });
+
     }
 
     public int mLastPosition = -1;
@@ -143,6 +147,7 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
             ft.add(R.id.fl_content, fragment).show(fragment);
         }
         ft.commitAllowingStateLoss();
+
         mLastPosition = index;
     }
 

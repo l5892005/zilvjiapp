@@ -2,19 +2,19 @@
 <tabs>
         <tab
             id="@+id/tab_index"
-            icon="@drawable/index"
+            icon="@drawable/a1"
             title="自律打卡" />
 
         <tab
             id="@+id/tab_thow"
-            icon="@drawable/thow"
+            icon="@drawable/a2"
             title="我的记录" />
         <tab
             id="@+id/tab_three"
-            icon="@drawable/three"
+            icon="@drawable/a3"
             title="记账设置" />
         <tab
             id="@+id/tab_four"
-            icon="@drawable/yugu"
+            icon="@drawable/a4"
             title="开眼视频" />
 </tabs>
