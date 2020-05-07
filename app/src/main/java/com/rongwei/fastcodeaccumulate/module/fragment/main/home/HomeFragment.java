@@ -1,5 +1,7 @@
 package com.rongwei.fastcodeaccumulate.module.fragment.main.home;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.res.TypedArray;
 import android.view.View;
 import android.widget.TextView;
@@ -45,6 +47,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
     private BaseQuickAdapter<UserCardsBean, BaseViewHolder> baseQuickAdapter;
     private List<UserCardsBean> userCardsBeans;
     private boolean isLogin;
+    private UserBean user;
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
@@ -74,7 +77,26 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
 
     @Override
     protected void initView() {
+        tvMemo.setText("你还未记录每日便签，请点击输入！");
+        tvMemo.setOnClickListener(v -> {
+            user = AndroidApplication.getInstance().getUser();
+            if (user==null){
+                LoginActivity.start(mActivity);
+            }else{
+                InputMemoDialogFragment inputPageFragment = InputMemoDialogFragment.newInstance(tvMemo.getText().toString(), InputMemoDialogFragment.MEMO);
+                mActivity.addFragment(inputPageFragment);
+                inputPageFragment.setSubmitClickListener(v1 -> {
+                    String s = inputPageFragment.getEtPage().getText().toString();
 
+                    mActivity.removeFragment(inputPageFragment);
+                    if (user !=null){
+                        mPresenter.setMemoInfo(user.getUid(),s);
+                    }else{
+                        LoginActivity.start(mActivity);
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -94,20 +116,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
         }else{
             tvMemo.setText("你还未记录每日便签，请点击输入！");
         }
-        tvMemo.setOnClickListener(v -> {
-            InputMemoDialogFragment inputPageFragment = InputMemoDialogFragment.newInstance(tvMemo.getText().toString(), InputMemoDialogFragment.MEMO);
-            mActivity.addFragment(inputPageFragment);
-            inputPageFragment.setSubmitClickListener(v1 -> {
-                String s = inputPageFragment.getEtPage().getText().toString();
-                UserBean user = AndroidApplication.getInstance().getUser();
-                mActivity.removeFragment(inputPageFragment);
-                if (user!=null){
-                    mPresenter.setMemoInfo(user.getUid(),s);
-                }else{
-                    LoginActivity.start(mActivity);
-                }
-            });
-        });
     }
 
     @Override
@@ -188,5 +196,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
                 loadData();
             }
         }
+    }
+
+    private void  jumpPng(){
+
     }
 }

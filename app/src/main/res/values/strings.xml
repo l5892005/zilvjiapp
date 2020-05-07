@@ -24,8 +24,8 @@
     <string name="hint_login_pwd" translatable="false">请输入密码</string>
     <string name="longin_name" translatable="false">登陆</string>
     <string name="register_name" translatable="false">注册</string>
-    <string name="note_hint_title_samll" translatable="false">请输入小节标题</string>
-    <string name="note_hint_content_big" translatable="false">请输入小节文本</string>
+    <string name="note_hint_title_samll" translatable="false">请输入小节标题,没有可不输</string>
+    <string name="note_hint_content_big" translatable="false">请输入小节文本，必输入！</string>
     <string name="account_pwd_error" translatable="false">账号密码起码要6位以上</string>
     <string name="submit" translatable="false">提交</string>
     <string name="note_my" translatable="false">我的记录</string>

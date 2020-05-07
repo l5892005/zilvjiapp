@@ -104,12 +104,12 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
         mFragments = new BaseFragment[4];
         HomeFragment homeFragment = HomeFragment.newInstance();
         MyHabitFragment ployFragment = MyHabitFragment.newInstance();
-        MyToolFragment myToolFragment = MyToolFragment.newInstance();
         VeryDayFragment mVeryDayFragment = VeryDayFragment.newInstance();
+        MyToolFragment myToolFragment = MyToolFragment.newInstance();
         mFragments[0] = homeFragment;
         mFragments[1] = ployFragment;
-        mFragments[2] = myToolFragment;
-        mFragments[3] = mVeryDayFragment;
+        mFragments[2] =mVeryDayFragment;
+        mFragments[3] = myToolFragment;
         bottomBar.setDefaultTabPosition(TAB_ONE);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override

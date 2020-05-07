@@ -134,17 +134,22 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
                     LoginActivity.start(mActivity);
                 }
                 break;
-            case "股票转账":
+            case "股票收支":
                 StockActivity.start(mActivity);
                 break;
             case "日常理财":
-                TotalMoneyActivityActivity.start(mActivity);
+            case "日常花销":
+            case "重要提醒":
+            case "关于本app":
+                toastAlert("功能还在开发中！");
+               // TotalMoneyActivityActivity.start(mActivity);
                 break;
             case "借还账本":
                 LendRebtActivity.start(mActivity);
                 break;
             case "经验总结":
-                ExperienceActivity.start(mActivity);
+                toastAlert("功能还在开发中！");
+                //ExperienceActivity.start(mActivity);
                 break;
             case "小建议":
                // VideoDetailActivity.start(mActivity);

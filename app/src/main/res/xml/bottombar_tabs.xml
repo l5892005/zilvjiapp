@@ -9,12 +9,15 @@
             id="@+id/tab_thow"
             icon="@drawable/a2"
             title="我的记录" />
+
         <tab
             id="@+id/tab_three"
-            icon="@drawable/a3"
-            title="记账设置" />
+            icon="@drawable/a4"
+            title="轻松一刻" />
+
         <tab
             id="@+id/tab_four"
-            icon="@drawable/a4"
-            title="开眼视频" />
+            icon="@drawable/a3"
+            title="我的账户" />
+
 </tabs>
