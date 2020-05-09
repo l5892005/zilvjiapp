@@ -78,7 +78,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
 
     @Override
     protected void initView() {
-        tvMemo.setText("你还未记录每日便签，请点击输入！");
+        tvMemo.setText(getResources().getString(R.string.daily_notes));
         tvMemo.setOnClickListener(v -> {
             user = AndroidApplication.getInstance().getUser();
             if (user == null) {
@@ -115,7 +115,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
             String contentVery = memoBean.getContentVery();
             tvMemo.setText(contentVery);
         } else {
-            tvMemo.setText("你还未记录每日便签，请点击输入！");
+            tvMemo.setText(getResources().getString(R.string.daily_notes));
         }
     }
 

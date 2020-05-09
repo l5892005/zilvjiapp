@@ -48,11 +48,11 @@
     </array>
 
     <string-array name="tools">
-        <item>打卡设置</item>
-        <item>借还账本</item>
-        <item>股票收支</item>
-        <item>经验总结</item>
-        <item>小建议</item>
+        <item>clockSet</item>
+        <item>accountBook</item>
+        <item>stockRecord</item>
+        <item>lifeQuotes</item>
+        <item>suggest</item>
     </string-array>
 
 </resources>

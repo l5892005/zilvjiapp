@@ -129,8 +129,8 @@ public class LendRebtActivity extends ToolbarActivity implements LendRebtContrac
 
     @Override
     protected void initData() {
-        titleList.add("借给他人");
-        titleList.add("欠他人钱");
+        titleList.add(getResources().getString(R.string.borrow_money));
+        titleList.add(getResources().getString(R.string.debt_money));
 
     }
 
@@ -168,9 +168,9 @@ public class LendRebtActivity extends ToolbarActivity implements LendRebtContrac
             public void onPageSelected(int position) {
                 index = position;
                 if (position == 1) {
-                    tvAdd.setText("欠他");
+                    tvAdd.setText(getResources().getString(R.string.debt_money));
                 } else {
-                    tvAdd.setText("借他");
+                    tvAdd.setText(getResources().getString(R.string.borrow_money));
                 }
             }
 
@@ -178,7 +178,7 @@ public class LendRebtActivity extends ToolbarActivity implements LendRebtContrac
             public void onPageScrollStateChanged(int state) {
             }
         });
-//        srlRefresh.setEnabled(enableRefresh());
+        srlRefresh.setEnabled(enableRefresh());
        /* srlRefresh.setEnabled(enableRefresh());
         srlRefresh.setColorSchemeColors(getResources().getColor(R.color.color_d138));
         srlRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -194,7 +194,7 @@ public class LendRebtActivity extends ToolbarActivity implements LendRebtContrac
 
     @Override
     protected String setToolbarTitle() {
-        return "借还账本";
+        return getResources().getString(R.string.lend_rebt);
     }
 
     @Override

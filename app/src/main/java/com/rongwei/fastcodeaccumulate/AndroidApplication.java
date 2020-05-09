@@ -2,6 +2,8 @@ package com.rongwei.fastcodeaccumulate;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.res.Configuration;
 
 import com.rongwei.fastcodeaccumulate.cons.CacheKey;
 import com.rongwei.fastcodeaccumulate.cons.Channel;
@@ -61,6 +63,7 @@ public class AndroidApplication extends Application {
        // mPublicParamBean = new PublicParamBean();
         handleSSLHandshake();
     }
+
 
     public void setUser(UserBean user) {
         mUser = user;

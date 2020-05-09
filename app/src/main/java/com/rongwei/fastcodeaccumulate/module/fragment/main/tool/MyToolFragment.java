@@ -28,6 +28,7 @@ import com.rongwei.fastcodeaccumulate.module.me.experience.ExperienceActivity;
 import com.rongwei.fastcodeaccumulate.module.me.money.lend.LendRebtActivity;
 import com.rongwei.fastcodeaccumulate.module.me.money.total.TotalMoneyActivityActivity;
 import com.rongwei.fastcodeaccumulate.module.me.stock.StockActivity;
+import com.rongwei.fastcodeaccumulate.module.note.edit.NoteEditeDetailActivity;
 import com.rongwei.fastcodeaccumulate.module.tool.setting.CardSettingActivity;
 import com.rongwei.fastcodeaccumulate.module.user.login.LoginActivity;
 import com.rongwei.fastcodeaccumulate.module.video.detail.VideoDetailActivity;
@@ -128,33 +129,29 @@ public class MyToolFragment extends BaseFragment implements MyToolContract.View,
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
         switch (strings.get(position)) {
             case "打卡设置":
+            case "clockSet":
                 if (user != null) {
                     CardSettingActivity.start(mActivity);
                 } else {
                     LoginActivity.start(mActivity);
                 }
                 break;
-            case "股票收支":
-                StockActivity.start(mActivity);
-                break;
-            case "日常理财":
-            case "日常花销":
-            case "重要提醒":
-            case "关于本app":
-                toastAlert("功能还在开发中！");
-               // TotalMoneyActivityActivity.start(mActivity);
-                break;
             case "借还账本":
+            case "accountBook":
                 LendRebtActivity.start(mActivity);
                 break;
+            case "股票收支":
+            case "stockRecord":
+                StockActivity.start(mActivity);
+                break;
             case "经验总结":
+            case "lifeQuotes":
                 toastAlert("功能还在开发中！");
-                //ExperienceActivity.start(mActivity);
                 break;
             case "小建议":
-               // VideoDetailActivity.start(mActivity);
+            case "suggest":
+                NoteEditeDetailActivity.start(mActivity,5,8);
                 break;
-
         }
     }
 
