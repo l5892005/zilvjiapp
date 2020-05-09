@@ -49,6 +49,9 @@ public interface API {
         @GET("v1/get_cards_status")
         Observable<BaseResultWrapper<CardBean>> getCardData(@Query("userId") String userId);
 
+        @GET("v1/delete_cards_status")
+        Observable<BaseResultWrapper<String>> deleteCardData(@Query("userId") int userId,@Query("cid") int cid);
+
         @GET("v1/get_cards")
         Observable<BaseResultWrapper<UserCardsToDayBean>> getCardDataToDay(@Query("userId") String userId);
 

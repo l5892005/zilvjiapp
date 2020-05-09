@@ -38,4 +38,10 @@
     <string name="add_card" >+ 添加一个自定义习惯卡片</string>
     <string name="stock_reconrd">"股票记录"</string>
     <string name="experience_text">"人生经验惨如狗"</string>
+    <string name="add_interest_card">"add interest card"</string>
+    <string name="sample_sub">"点击更改,变成真实的兴趣"</string>
+    <string name="is_delete_title">确定删除此卡片?</string>
+    <string name="cacel">取消</string>
+    <string name="sure" >确定</string>
+    <string name="prompt">提示</string>
 </resources>

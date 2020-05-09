@@ -5,5 +5,6 @@ public enum EventTag {
     message,
     loginSucess,
     addmessage,
+    cardSetSucess,
 
 }

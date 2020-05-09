@@ -97,19 +97,19 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
     public static final int TAB_ONE = 0;
     public static final int TAB_TWO = 1;
     public static final int TAB_THREE = 2;
-    public static final int TAB_FOUR = 3;
+//    public static final int TAB_FOUR = 3;
 
     @Override
     protected void initView() {
-        mFragments = new BaseFragment[4];
+        mFragments = new BaseFragment[3];
         HomeFragment homeFragment = HomeFragment.newInstance();
         MyHabitFragment ployFragment = MyHabitFragment.newInstance();
-        VeryDayFragment mVeryDayFragment = VeryDayFragment.newInstance();
+//        VeryDayFragment mVeryDayFragment = VeryDayFragment.newInstance();
         MyToolFragment myToolFragment = MyToolFragment.newInstance();
         mFragments[0] = homeFragment;
         mFragments[1] = ployFragment;
-        mFragments[2] =mVeryDayFragment;
-        mFragments[3] = myToolFragment;
+//        mFragments[2] =mVeryDayFragment;
+        mFragments[2] = myToolFragment;
         bottomBar.setDefaultTabPosition(TAB_ONE);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
@@ -124,9 +124,9 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
                     case R.id.tab_three:
                         selectedFragment(TAB_THREE);
                         break;
-                    case R.id.tab_four:
-                        selectedFragment(TAB_FOUR);
-                        break;
+//                    case R.id.tab_four:
+//                        selectedFragment(TAB_FOUR);
+//                        break;
                 }
             }
         });

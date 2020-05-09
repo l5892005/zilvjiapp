@@ -21,12 +21,12 @@
         app:elevation="6dp"
         android:clickable="true"
         app:borderWidth="0dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/colorPrimary"
         app:rippleColor="#0097a7"
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
         app:fabSize="mini"
-        android:src="@android:drawable/ic_menu_add"
+        android:src="@drawable/a12"
         app:pressedTranslationZ="12dp"
         android:layout_height="wrap_content"/>
 </FrameLayout>

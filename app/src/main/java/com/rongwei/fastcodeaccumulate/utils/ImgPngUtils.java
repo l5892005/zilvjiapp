@@ -66,6 +66,9 @@ public class ImgPngUtils {
        if (png.size()==0){
            return 0;
        }
+       if (name==null){
+           return 0;
+       }
        return png.get(name);
     }
 

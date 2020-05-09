@@ -10,14 +10,14 @@
             icon="@drawable/a2"
             title="我的记录" />
 
-        <tab
-            id="@+id/tab_three"
-            icon="@drawable/a4"
-            title="轻松一刻" />
 
         <tab
-            id="@+id/tab_four"
+            id="@+id/tab_three"
             icon="@drawable/a3"
             title="我的账户" />
 
 </tabs>
+    <!--        <tab-->
+    <!--            id="@+id/tab_three"-->
+    <!--            icon="@drawable/a4"-->
+    <!--            title="轻松一刻" />-->

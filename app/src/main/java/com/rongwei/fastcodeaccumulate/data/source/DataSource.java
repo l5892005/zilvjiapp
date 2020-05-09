@@ -43,6 +43,8 @@ public interface DataSource {
 
     Observable<BaseResultWrapper<CardBean>> getCardData(String uid);
 
+    Observable<BaseResultWrapper<String>> deleteCardData(int uid,int cid);
+
     Observable<BaseResultWrapper<PersionNoteListBean>> getNoteListCatalog(int userId, int uid);
 
     Observable<BaseResultWrapper<UserBean>> setLogin(String account, String pwd);
