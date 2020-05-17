@@ -1,5 +1,6 @@
 package com.rongwei.fastcodeaccumulate.module.main.main;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
