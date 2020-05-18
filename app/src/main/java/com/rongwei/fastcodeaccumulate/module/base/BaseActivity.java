@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.Cons;
 import com.rongwei.fastcodeaccumulate.R;
+import com.rongwei.fastcodeaccumulate.annotation.InjectTool;
 import com.rongwei.fastcodeaccumulate.data.event.EventTag;
 import com.rongwei.fastcodeaccumulate.data.event.MessageEvent;
 import com.rongwei.fastcodeaccumulate.utils.LogUtils;
@@ -51,7 +52,7 @@ public abstract class BaseActivity extends RxAppCompatActivity implements IBaseV
         TAG = getClass().getSimpleName();
         AndroidApplication.getInstance().getmActivityManager().addActivity(this);
         initData();
-        setContentView(attachLayoutRes());
+        setContentViewValue();
         setStatusBar();
         unbinder = ButterKnife.bind(this);
         mFragmentManager = getSupportFragmentManager();
@@ -64,8 +65,9 @@ public abstract class BaseActivity extends RxAppCompatActivity implements IBaseV
         loadData();
     }
 
-    @LayoutRes
-    protected abstract int attachLayoutRes();
+    private void setContentViewValue() {
+        InjectTool.inject(this);
+    }
 
     protected void initInjector() {
     }

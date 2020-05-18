@@ -5,13 +5,14 @@ import android.content.Intent;
 
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.R;
+import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerTotalMoneyActivityComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.TotalMoneyActivityModule;
 
 import com.rongwei.fastcodeaccumulate.module.base.BaseActivity;
 
 import javax.inject.Inject;
-
+@ContentView( R.layout.activity_total_money_activity)
 public class TotalMoneyActivityActivity extends BaseActivity implements TotalMoneyActivityContract.View {
 
     @Inject
@@ -33,11 +34,6 @@ public class TotalMoneyActivityActivity extends BaseActivity implements TotalMon
     }
 
 
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_total_money_activity;
-
-    }
 
     @Override
     protected void initData() {

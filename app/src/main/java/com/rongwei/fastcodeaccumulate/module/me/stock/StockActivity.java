@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bin.david.form.core.SmartTable;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.R;
+import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.data.bean.StockNoteBean;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerStockComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.StockModule;
@@ -26,7 +27,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+@ContentView(R.layout.activity_stock)
 public class StockActivity extends ToolbarActivity implements StockContract.View {
 
     @Inject
@@ -61,12 +62,6 @@ public class StockActivity extends ToolbarActivity implements StockContract.View
                 .inject(this);
     }
 
-
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_stock;
-
-    }
 
     @Override
     protected void initData() {

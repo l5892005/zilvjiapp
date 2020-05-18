@@ -18,6 +18,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.R;
+import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerCharComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.CharModule;
 import com.rongwei.fastcodeaccumulate.module.base.BaseActivity;
@@ -30,7 +31,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+@ContentView(R.layout.activity_char)
 public class CharActivity extends BaseActivity implements CharContract.View {
 
     @Inject
@@ -53,12 +54,6 @@ public class CharActivity extends BaseActivity implements CharContract.View {
                 .inject(this);
     }
 
-
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_char;
-
-    }
 
     @Override
     protected void initData() {

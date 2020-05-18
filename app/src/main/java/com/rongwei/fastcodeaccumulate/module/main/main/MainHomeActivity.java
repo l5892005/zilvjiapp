@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.BuildConfig;
 import com.rongwei.fastcodeaccumulate.R;
+import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.data.bean.VersionBean;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerMainHomeComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.MainHomeModule;
@@ -56,7 +57,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-
+@ContentView(R.layout.activity_main_home)
 public class MainHomeActivity extends BaseActivity implements MainHomeContract.View {
 
     @Inject
@@ -82,12 +83,6 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
                 .inject(this);
     }
 
-
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_main_home;
-
-    }
 
     @Override
     protected void initData() {

@@ -14,6 +14,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.R;
+import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.data.bean.CardBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
@@ -30,7 +31,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+@ContentView(R.layout.activity_card_setting)
 public class CardSettingActivity extends ToolbarActivity implements CardSettingContract.View, BaseQuickAdapter.OnItemChildClickListener {
 
     @Inject
@@ -58,11 +59,6 @@ public class CardSettingActivity extends ToolbarActivity implements CardSettingC
     }
 
 
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_card_setting;
-
-    }
 
     @Override
     protected void initData() {

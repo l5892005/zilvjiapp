@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.R;
 import com.rongwei.fastcodeaccumulate.adapter.FastCodeAdapter;
+import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.data.bean.FastCodeBean;
 import com.rongwei.fastcodeaccumulate.data.param.InserFastCodeBean;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerMainComponent;
@@ -28,7 +29,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dalvik.system.BaseDexClassLoader;
-
+@ContentView(R.layout.activity_main)
 public class MainActivity extends ToolbarActivity implements MainContract.View {
 
     @Inject
@@ -56,11 +57,6 @@ public class MainActivity extends ToolbarActivity implements MainContract.View {
     }
 
 
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_main;
-
-    }
 
     @Override
     protected void initData() {

@@ -18,6 +18,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.R;
 import com.rongwei.fastcodeaccumulate.adapter.ComFragmentAdapter;
+import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.data.bean.LeadDebotBean;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerLendRebtComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.LendRebtModule;
@@ -44,7 +45,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+@ContentView(R.layout.activity_lend_rebt)
 public class LendRebtActivity extends ToolbarActivity implements LendRebtContract.View {
 
     @Inject
@@ -116,12 +117,6 @@ public class LendRebtActivity extends ToolbarActivity implements LendRebtContrac
         etMoney.setText("");
         etRemark.setText("");
         KeyboardUtils.hideSoftInput(this);
-    }
-
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_lend_rebt;
-
     }
 
     private List<Fragment> fragmentList = new ArrayList<>();

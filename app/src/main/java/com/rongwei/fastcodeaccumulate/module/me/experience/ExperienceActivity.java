@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.R;
 import com.rongwei.fastcodeaccumulate.adapter.ExperienceAdapter;
+import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.data.bean.ExperienceBean;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerExperienceComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.ExperienceModule;
@@ -24,7 +25,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-
+@ContentView(R.layout.activity_experience)
 public class ExperienceActivity extends ToolbarActivity implements ExperienceContract.View {
 
     @Inject
@@ -54,11 +55,6 @@ public class ExperienceActivity extends ToolbarActivity implements ExperienceCon
     }
 
 
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_experience;
-
-    }
 
     @Override
     protected void initData() {
