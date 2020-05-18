@@ -106,6 +106,9 @@ public class StockActivity extends ToolbarActivity implements StockContract.View
         }
         StockNoteBean.DataBean bean=new StockNoteBean.DataBean();
         bean.setTakeout(totle+"");
+        if (beans==null ||beans.size()==0){
+            return;
+        }
         bean.setTotalmoney(beans.get(beans.size()-1).getTotalmoney());
         beans.add(bean);
         table.setData(beans);
@@ -116,10 +119,10 @@ public class StockActivity extends ToolbarActivity implements StockContract.View
      * 提交金钱记录
      */
     private void submitAddMoneyRecord() {
-        if (beans == null || beans.size() == 0) {
+        /*if (beans == null || beans.size() == 0) {
             toastFailed("无法保存你的数据");
             return;
-        }
+        }*/
         String etTakeOutString = etTakeOut.getText().toString().trim();
         String etPutInString = etPutIn.getText().toString().trim();
         String etRemakeString = etRemake.getText().toString().trim();
@@ -130,9 +133,15 @@ public class StockActivity extends ToolbarActivity implements StockContract.View
         int outNum = 0;
         int intNum = 0;
         String remake = etRemakeString;
-        StockNoteBean.DataBean dataBean = beans.get(beans.size() - 1);
-        String stockCode = dataBean.getStockcode();
-        int money = dataBean.getTotalmoney();
+        String stockCode="";
+        int money = 0;
+        if (beans == null || beans.size() == 0){
+
+        }else{
+            StockNoteBean.DataBean dataBean = beans.get(beans.size() - 1);
+            stockCode = dataBean.getStockcode();
+            money = dataBean.getTotalmoney();
+        }
         if (!TextUtils.isEmpty(etTakeOutString)) {
             outNum = Integer.parseInt(etTakeOutString);
         }

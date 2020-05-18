@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="img_list">
+        <item>a1</item>
+        <item>a2</item>
+        <item>a3</item>
+        <item>a4</item>
+        <item>a5</item>
+        <item>a6</item>
+        <item>a7</item>
+        <item>a8</item>
+        <item>a9</item>
+        <item>a10</item>
+        <item>a11</item>
+        <item>a12</item>
+        <item>a13</item>
+        <item>a14</item>
+        <item>a15</item>
+        <item>a16</item>
+        <item>a17</item>
+        <item>a18</item>
+        <item>a19</item>
+        <item>a20</item>
+
+    </string-array>
+    <array name="img_list_ids">
+        <item>@drawable/a1</item>
+        <item>@drawable/a2</item>
+        <item>@drawable/a3</item>
+        <item>@drawable/a4</item>
+        <item>@drawable/a5</item>
+        <item>@drawable/a6</item>
+        <item>@drawable/a7</item>
+        <item>@drawable/a8</item>
+        <item>@drawable/a9</item>
+        <item>@drawable/a10</item>
+        <item>@drawable/a11</item>
+        <item>@drawable/a12</item>
+        <item>@drawable/a13</item>
+        <item>@drawable/a14</item>
+        <item>@drawable/a15</item>
+        <item>@drawable/a16</item>
+        <item>@drawable/a17</item>
+        <item>@drawable/a18</item>
+        <item>@drawable/a19</item>
+        <item>@drawable/a20</item>
+    </array>
+
+    <string-array name="tools">
+        <item>clockSet</item>
+        <item>accountBook</item>
+        <item>stockRecord</item>
+        <item>lifeQuotes</item>
+        <item>suggest</item>
+    </string-array>
+
+</resources>

@@ -6,25 +6,23 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/dp_10">
+        android:visibility="visible">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_marginTop="@dimen/dp_10"
+            android:layout_gravity="center"
             android:background="@drawable/bg_headline_color_gray"
-            android:paddingLeft="@dimen/dp_10"
-            android:paddingTop="@dimen/dp_4"
-            android:paddingRight="@dimen/dp_10"
-            android:paddingBottom="@dimen/dp_4"
             android:text="@string/very_work"
-            android:textColor="@color/text_999"
-            android:textSize="@dimen/sp_14" />
+            android:textColor="@color/text_333"
+            android:layout_marginTop="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_4"
+            android:paddingRight="@dimen/dp_4"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:textSize="@dimen/sp_18" />
     </FrameLayout>
 
     <RelativeLayout
@@ -39,7 +37,7 @@
             android:layout_height="wrap_content"
             android:lineSpacingExtra="@dimen/dp_6"
             android:paddingLeft="@dimen/dp_26"
-            android:text="000"
+            android:text="点击记录你的每日便签!"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_18" />
     </RelativeLayout>
@@ -74,14 +72,22 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_80"
-        android:background="@drawable/bg_mark_text"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.mingle.widget.LoadingView
+            android:id="@+id/loadView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/xiaoji" />
-    </RelativeLayout>
+            android:src="@drawable/xiaoji"
+            android:visibility="gone" />
+
+    </LinearLayout>
 </LinearLayout>

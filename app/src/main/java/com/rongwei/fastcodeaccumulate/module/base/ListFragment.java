@@ -61,7 +61,7 @@ public abstract class ListFragment<T extends IListPresenter, K extends BaseQuick
 
     private void initRefresh() {
         mSwipeRefreshLayout.setEnabled(enableRefresh());
-        mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimaryDark));
+        mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

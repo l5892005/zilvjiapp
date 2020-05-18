@@ -35,6 +35,17 @@ public class CardSettingPresenter implements CardSettingContract.Presenter {
         });
     }
 
+    @Override
+    public void deleteCardData(String userId, int cid) {
+        mRepository.deleteCardData(Integer.parseInt(userId),cid).compose(mCardSettingView.initNetLifecycler()).subscribe(new SimpleWrapperObserver<String>(mCardSettingView) {
+            @Override
+            public void onSuccess(String data) {
+                getCardData(userId);
+                mCardSettingView.toastSucc("删除成功");
+            }
+        });
+    }
+
     /**
      * 添加一张卡片
      * @param userId
@@ -58,7 +69,7 @@ public class CardSettingPresenter implements CardSettingContract.Presenter {
         mRepository.setReModeCard(userId,cid+"",name,imageName,colorBg).compose(mCardSettingView.initNetLifecycler()).subscribe(new SimpleWrapperObserver<CardBean>(mCardSettingView) {
             @Override
             public void onSuccess(CardBean data) {
-                mCardSettingView.toastSucc("修改"+name+"成功,会在第二天生效。");
+                mCardSettingView.toastSucc("修改"+name+"成功!");
                 mCardSettingView.getCardDataSucess(data);
             }
         });

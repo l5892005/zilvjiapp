@@ -116,6 +116,11 @@ public class RemoteDataSource implements DataSource {
         return retrofit.create(API.BaseApi.class).getCardData(uid);
     }
 
+    @Override
+    public Observable<BaseResultWrapper<String>> deleteCardData(int uid,int cid) {
+        return retrofit.create(API.BaseApi.class).deleteCardData(uid,cid);
+    }
+
 
     public Observable<BaseResultWrapper<UserCardsToDayBean>> getCardDataToDay(String userId) {
         return retrofit.create(API.BaseApi.class).getCardDataToDay(userId);

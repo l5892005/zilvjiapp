@@ -1,12 +1,15 @@
 package com.rongwei.fastcodeaccumulate.module.tool.setting;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,11 +21,16 @@ import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.data.bean.CardBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserCardsToDayBean;
+import com.rongwei.fastcodeaccumulate.data.event.EventTag;
+import com.rongwei.fastcodeaccumulate.data.event.MessageEvent;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerCardSettingComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.CardSettingModule;
 import com.rongwei.fastcodeaccumulate.module.base.ToolbarActivity;
 import com.rongwei.fastcodeaccumulate.module.dialog.AddCardDialogFragment;
+import com.rongwei.fastcodeaccumulate.module.mian.MainActivity;
 import com.rongwei.fastcodeaccumulate.utils.ImgPngUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +40,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 @ContentView(R.layout.activity_card_setting)
-public class CardSettingActivity extends ToolbarActivity implements CardSettingContract.View, BaseQuickAdapter.OnItemChildClickListener {
+public class CardSettingActivity extends ToolbarActivity implements CardSettingContract.View, BaseQuickAdapter.OnItemChildClickListener , BaseQuickAdapter.OnItemChildLongClickListener{
 
     @Inject
     CardSettingContract.Presenter mPresenter;
@@ -42,6 +50,7 @@ public class CardSettingActivity extends ToolbarActivity implements CardSettingC
     TextView tvAddCard;
     private BaseQuickAdapter baseQuickAdapter;
     private List<CardBean.DataBean> data=new ArrayList<>();
+    private AlertDialog.Builder builder;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, CardSettingActivity.class);
@@ -109,15 +118,27 @@ public class CardSettingActivity extends ToolbarActivity implements CardSettingC
         baseQuickAdapter = new BaseQuickAdapter<CardBean.DataBean, BaseViewHolder>(R.layout.setting_cards_item, data) {
             @Override
             protected void convert(BaseViewHolder helper, CardBean.DataBean item) {
+                TextView tvSample = helper.getView(R.id.tv_sample);
+                if (item.getErname().equals(getResources().getString(R.string.add_interest_card))){
+                    tvSample.setVisibility(View.VISIBLE);
+                    if (data.size()>1){
+                        tvSample.setText(getResources().getString(R.string.sample_sub));
+                    }
+                }else{
+                    tvSample.setVisibility(View.GONE);
+                }
                 helper.setImageResource(R.id.iv_img, ImgPngUtils.getInstance(mContext).getPngName(item.getImgcard()));
                 helper.setText(R.id.tv_name, item.getErname());
                 helper.setText(R.id.tv_count, item.getCardnum() + "天");
                 helper.addOnClickListener(R.id.ll_item);
+                helper.addOnLongClickListener(R.id.ll_item);
             }
         };
         rvList.setLayoutManager(new LinearLayoutManager(mContext));
         rvList.setAdapter(baseQuickAdapter);
         baseQuickAdapter.setOnItemChildClickListener(this);
+        baseQuickAdapter.setOnItemChildLongClickListener(this);
+        EventBus.getDefault().post(new MessageEvent(EventTag.cardSetSucess,null));
     }
 
     @Override
@@ -139,4 +160,30 @@ public class CardSettingActivity extends ToolbarActivity implements CardSettingC
         });
 
     }
+
+    @Override
+    public boolean onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
+        showDeleteCardDialog(data.get(position).getUseid(),data.get(position).getCardid());
+        return false;
+    }
+    /**
+     * 两个按钮的 dialog
+     */
+    private void showDeleteCardDialog(String uid,int cid) {
+        builder = new AlertDialog.Builder(this).setIcon(R.drawable.a1).setTitle(getResources().getString(R.string.prompt))
+                .setMessage(getResources().getString(R.string.is_delete_title)).setPositiveButton(getResources().getString(R.string.sure), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mPresenter.deleteCardData(uid,cid);
+                    }
+                }).setNegativeButton(getResources().getString(R.string.cacel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        builder.create().show();
+    }
+
+
 }

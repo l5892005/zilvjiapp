@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_80"
         android:layout_margin="@dimen/dp_8"
+        android:visibility="gone"
         android:orientation="horizontal">
         <Button
             android:layout_width="0dp"

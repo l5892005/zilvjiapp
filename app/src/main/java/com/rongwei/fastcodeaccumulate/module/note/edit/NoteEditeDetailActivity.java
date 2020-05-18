@@ -116,7 +116,7 @@ public class NoteEditeDetailActivity extends ToolbarActivity implements NoteEdit
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("提示");
         builder.setMessage("添加成功");
-        builder.setIcon(R.mipmap.ic_launcher);
+        builder.setIcon(R.drawable.a1);
         builder.setCancelable(true);            //点击对话框以外的区域是否让对话框消失
         //设置正面按钮
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {

@@ -3,18 +3,21 @@
         <tab
             id="@+id/tab_index"
             icon="@drawable/a1"
-            title="自律打卡" />
+            title="@string/clock_in" />
 
         <tab
             id="@+id/tab_thow"
             icon="@drawable/a2"
-            title="我的记录" />
+            title="@string/my_note" />
+
+
         <tab
             id="@+id/tab_three"
             icon="@drawable/a3"
-            title="记账设置" />
-        <tab
-            id="@+id/tab_four"
-            icon="@drawable/a4"
-            title="开眼视频" />
+            title="@string/my_account" />
+
 </tabs>
+    <!--        <tab-->
+    <!--            id="@+id/tab_three"-->
+    <!--            icon="@drawable/a4"-->
+    <!--            title="轻松一刻" />-->

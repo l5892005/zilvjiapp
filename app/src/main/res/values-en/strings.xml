@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Learn Card</string>
+    <string name="no_data_error_long" translatable="false">It was empty</string>
+    <string name="net_error">dear，Your mobile phone network is not very smooth</string>
+    <string name="share_donot_install_app">Unable to share without installing the appropriate application</string>
+    <string name="login_donot_install_app">You do not have WeChat installed, please use another login method</string>
+    <string name="bind_donot_install_app">Unable to bind without installing the appropriate application</string>
+
+    <string name="net_error_long" translatable="false">Network request failed</string>
+    <string name="reload" translatable="false">reload</string>
+    <string name="code_name" translatable="false">author:</string>
+    <string name="code_type" translatable="false">type:</string>
+    <string name="code_type_desc" translatable="false">type specification:</string>
+    <string name="code_content" translatable="false">content:</string>
+    <string name="code_imp" translatable="false">Whether important:</string>
+    <string name="code_time" translatable="false">creation time:</string>
+    <string name="very_work" translatable="false">Daily work</string>
+    <string name="very_card" translatable="false">Daily clock:</string>
+    <string name="my_habit" translatable="false">my habits</string>
+    <string name="my_note" translatable="false">MyNotes</string>
+    <string name="note_detail" translatable="false">Note the details</string>
+    <string name="login_string" translatable="false">Learn Card</string>
+    <string name="hint_login_account" translatable="false">Please enter account number</string>
+    <string name="hint_login_pwd" translatable="false">enter your PIN</string>
+    <string name="longin_name" translatable="false">login</string>
+    <string name="principal_unchanged">Principal unchanged</string>
+    <string name="register_name" translatable="false">register</string>
+    <string name="note_hint_title_samll" translatable="false">Please enter a section title</string>
+    <string name="note_hint_content_big" translatable="false">Please enter the section text, must enter!</string>
+    <string name="account_pwd_error" translatable="false">The password should be at least 6 characters</string>
+    <string name="submit" translatable="false">submit</string>
+    <string name="note_my" translatable="false">My record</string>
+    <string name="add_note_list" translatable="false">Add notes</string>
+    <string name="title_lenght_error">The headline should be no more than 200 words</string>
+    <string name="content_lenght_error">The content should be no more than 1,000 words</string>
+    <string name="data_transfs_error">Data transfer problem, best exit reenter</string>
+    <string name="card_setting" >Clock Settings</string>
+    <string name="mytool" >My account</string>
+    <string name="add_card" >+ Add a custom custom card</string>
+    <string name="stock_reconrd">Stock record</string>
+    <string name="experience_text">Life experience is as miserable as a dog</string>
+    <string name="add_interest_card">"add interest card"</string>
+    <string name="sample_sub">Click change to become real interest</string>
+    <string name="is_delete_title">Be sure to delete the card?</string>
+    <string name="roll_out">RollOut</string>
+    <string name="cacel">cancel</string>
+    <string name="roll_in">transferIn</string>
+    <string name="remark">remark</string>
+    <string name="sure" >sure</string>
+    <string name="lend_rebt">borrowingReturning</string>
+    <string name="prompt">hint</string>
+    <string name="input_name">name</string>
+    <string name="input_money">money</string>
+    <string name="borrow_money">brrow</string>
+    <string name="debt_money">debt</string>
+    <string name="clock_in">ClockIn</string>
+    <string name="my_account">MyAccount</string>
+    <string name="daily_notes">input daily notes</string>
+</resources>

@@ -95,6 +95,9 @@ public class Repository implements DataSource {
     public Observable<BaseResultWrapper<CardBean>> getCardData(String userId) {
         return mRemoteDataSource.getCardData(userId).compose(this.<BaseResultWrapper<CardBean>>initNetworkThread());
     }
+    public Observable<BaseResultWrapper<String>> deleteCardData(int userId,int uid) {
+        return mRemoteDataSource.deleteCardData(userId,uid).compose(this.<BaseResultWrapper<String>>initNetworkThread());
+    }
 
     public Observable<BaseResultWrapper<UserCardsToDayBean>> getCardDataToDay(String userId) {
         return mRemoteDataSource.getCardDataToDay(userId).compose(this.<BaseResultWrapper<UserCardsToDayBean>>initNetworkThread());

@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="是否保持本金不变"/>
+        android:text="@string/principal_unchanged"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
@@ -30,7 +30,7 @@
             android:background="@null"
             android:inputType="number"
             android:layout_height="match_parent"
-            android:hint="转出金额"/>
+            android:hint="@string/roll_out"/>
         <EditText
             android:id="@+id/et_put_in"
             android:layout_width="0dp"
@@ -39,7 +39,7 @@
             android:inputType="number"
             android:background="@null"
             android:layout_height="match_parent"
-            android:hint="转入金额"/>
+            android:hint="@string/roll_in"/>
         <EditText
             android:id="@+id/et_remake"
             android:layout_width="0dp"
@@ -47,7 +47,7 @@
             android:gravity="center"
             android:background="@null"
             android:layout_height="match_parent"
-            android:hint="备注"/>
+            android:hint="@string/remark"/>
         <TextView
             android:id="@+id/tv_add"
             android:layout_width="0dp"
@@ -56,6 +56,6 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:background="@color/colorPrimary"
-            android:text="提交"/>
+            android:text="@string/submit"/>
     </LinearLayout>
 </LinearLayout>

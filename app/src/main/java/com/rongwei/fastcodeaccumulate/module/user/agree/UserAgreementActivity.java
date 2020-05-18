@@ -3,6 +3,7 @@ package com.rongwei.fastcodeaccumulate.module.user.agree;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
@@ -228,7 +229,7 @@ public class UserAgreementActivity extends ToolbarActivity implements UserAgreem
             "\n" +
             "说明\n" +
             "\n" +
-            "本公司向您提供包括但不限于游戏下载、使用、充值、客户服务、游戏资讯、论坛交流等服务（以下称“本服务”）。本公司针对本服务所制定的相关规定，包括但不限于本公司在游戏平台下运营的任何一款游戏所包含的游戏规则、用户处罚条例，客服条例等，以及本公司就账号使用及管理、游戏充值等服务制定的相关服务协议、规则。本公司在此提示用户，请您在使用本服务前详细阅读本协议的所有内容，尤其是免除、限制本公司责任或者限制用户权利的条款（特别是粗体下划线标注的内容），如您对本协议有任何疑问，请向本公司（020-3755991）进行咨询。一旦您使用本服务，即表示您已阅读并完全同意接受本协议项下所述条款和条件的约束。如果您不同意本协议的任何条款，请您不要使用本服务。未成年人应经其监护人陪同阅读本服务协议并表示同意，方可接受本服务协议。监护人应加强对未成年人的监督和保护，因其未谨慎履行监护责任而损害未成年人利益或者本公司利益的，应由监护人承担责任。\n" +
+            "本公司向您提供包括但不限于游戏下载、使用、充值、客户服务、游戏资讯、论坛交流等服务（以下称“本服务”）。本公司针对本服务所制定的相关规定，包括但不限于本公司在游戏平台下运营的任何一款游戏所包含的游戏规则、用户处罚条例，客服条例等，以及本公司就账号使用及管理、游戏充值等服务制定的相关服务协议、规则。本公司在此提示用户，请您在使用本服务前详细阅读本协议的所有内容，尤其是免除、限制本公司责任或者限制用户权利的条款（特别是粗体下划线标注的内容），如您对本协议有任何疑问，请向本公司进行咨询。一旦您使用本服务，即表示您已阅读并完全同意接受本协议项下所述条款和条件的约束。如果您不同意本协议的任何条款，请您不要使用本服务。未成年人应经其监护人陪同阅读本服务协议并表示同意，方可接受本服务协议。监护人应加强对未成年人的监督和保护，因其未谨慎履行监护责任而损害未成年人利益或者本公司利益的，应由监护人承担责任。\n" +
             "\n" +
             "权利声明\n" +
             "\n" +
@@ -292,6 +293,7 @@ public class UserAgreementActivity extends ToolbarActivity implements UserAgreem
     protected void initView() {
         super.initView();
         tvUser.setText(userAgreement);
+        tvUser.setMovementMethod(ScrollingMovementMethod.getInstance());
     }
 
     @Override

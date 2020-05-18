@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="请输入人名" />
+                android:hint="@string/input_name" />
 
             <EditText
                 android:id="@+id/et_money"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="请输入金额"
+                android:hint="@string/input_money"
                 android:inputType="number" />
 
             <EditText
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="请输入备注" />
+                android:hint="@string/remark" />
 
             <TextView
                 android:id="@+id/tv_add"
@@ -65,7 +65,7 @@
                 android:layout_weight="0.5"
                 android:background="@color/colorPrimary"
                 android:gravity="center"
-                android:text="借钱"
+                android:text="@string/borrow_money"
                 android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>

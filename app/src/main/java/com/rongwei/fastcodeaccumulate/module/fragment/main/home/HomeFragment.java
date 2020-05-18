@@ -1,5 +1,7 @@
 package com.rongwei.fastcodeaccumulate.module.fragment.main.home;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.res.TypedArray;
 import android.view.View;
 import android.widget.TextView;
@@ -21,6 +23,7 @@ import com.rongwei.fastcodeaccumulate.injector.components.DaggerHomeComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.HomeModule;
 import com.rongwei.fastcodeaccumulate.module.base.BaseFragment;
 import com.rongwei.fastcodeaccumulate.module.dialog.InputMemoDialogFragment;
+import com.rongwei.fastcodeaccumulate.module.tool.setting.CardSettingActivity;
 import com.rongwei.fastcodeaccumulate.module.user.login.LoginActivity;
 import com.rongwei.fastcodeaccumulate.utils.ImgPngUtils;
 
@@ -45,6 +48,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
     private BaseQuickAdapter<UserCardsBean, BaseViewHolder> baseQuickAdapter;
     private List<UserCardsBean> userCardsBeans;
     private boolean isLogin;
+    private UserBean user;
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
@@ -74,40 +78,45 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
 
     @Override
     protected void initView() {
+        tvMemo.setText(getResources().getString(R.string.daily_notes));
+        tvMemo.setOnClickListener(v -> {
+            user = AndroidApplication.getInstance().getUser();
+            if (user == null) {
+                LoginActivity.start(mActivity);
+            } else {
+                InputMemoDialogFragment inputPageFragment = InputMemoDialogFragment.newInstance(tvMemo.getText().toString(), InputMemoDialogFragment.MEMO);
+                mActivity.addFragment(inputPageFragment);
+                inputPageFragment.setSubmitClickListener(v1 -> {
+                    String s = inputPageFragment.getEtPage().getText().toString();
 
+                    mActivity.removeFragment(inputPageFragment);
+                    if (user != null) {
+                        mPresenter.setMemoInfo(user.getUid(), s);
+                    } else {
+                        LoginActivity.start(mActivity);
+                    }
+                });
+            }
+        });
     }
 
     @Override
     protected void loadData() {
-        if (isLogin){
+        if (isLogin) {
             UserBean user = AndroidApplication.getInstance().getUser();
-            mPresenter.getMemoData(user.getUid()+"");
-            mPresenter.getCardDataToDay(user.getUid()+"");
+            mPresenter.getMemoData(user.getUid() + "");
+            mPresenter.getCardDataToDay(user.getUid() + "");
         }
     }
 
     @Override
     public void getAllDataSucess(MemoBean memoBean) {
-        if (memoBean!=null){
+        if (memoBean != null) {
             String contentVery = memoBean.getContentVery();
             tvMemo.setText(contentVery);
-        }else{
-            tvMemo.setText("你还未记录每日便签，请点击输入！");
+        } else {
+            tvMemo.setText(getResources().getString(R.string.daily_notes));
         }
-        tvMemo.setOnClickListener(v -> {
-            InputMemoDialogFragment inputPageFragment = InputMemoDialogFragment.newInstance(tvMemo.getText().toString(), InputMemoDialogFragment.MEMO);
-            mActivity.addFragment(inputPageFragment);
-            inputPageFragment.setSubmitClickListener(v1 -> {
-                String s = inputPageFragment.getEtPage().getText().toString();
-                UserBean user = AndroidApplication.getInstance().getUser();
-                mActivity.removeFragment(inputPageFragment);
-                if (user!=null){
-                    mPresenter.setMemoInfo(user.getUid(),s);
-                }else{
-                    LoginActivity.start(mActivity);
-                }
-            });
-        });
     }
 
     @Override
@@ -123,20 +132,23 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
         char[] splitImageStatus = bean.getCodeCard().toCharArray();
         userCardsBeans = new ArrayList<>();
         for (int i = 0; i < splitImageCode.length; i++) {
-            UserCardsBean userCardsBean=new UserCardsBean();
+            UserCardsBean userCardsBean = new UserCardsBean();
             userCardsBean.setCardid(splitImageCode[i]);
             userCardsBean.setCardName(splitCardName[i]);
             userCardsBean.setImgName(splitImageName[i]);
             userCardsBean.setImgsCount(splitImageCount[i]);
-            userCardsBean.setImgstatic(splitImageStatus[i]+"");
+            userCardsBean.setImgstatic(splitImageStatus[i] + "");
             userCardsBeans.add(userCardsBean);
         }
         TypedArray array = getResources().obtainTypedArray(R.array.img_list_ids);
         baseQuickAdapter = new BaseQuickAdapter<UserCardsBean, BaseViewHolder>(R.layout.user_cards_item, userCardsBeans) {
             @Override
             protected void convert(BaseViewHolder helper, UserCardsBean item) {
+                if (item == null) {
+                    return;
+                }
                 String[] stringArray = getResources().getStringArray(R.array.img_list);
-                helper.setImageResource(R.id.iv_img, ImgPngUtils.getInstance(mContext).getPngName(item.getImgName()));
+                helper.setImageResource(R.id.iv_img, ImgPngUtils.getInstance(mContext).getPngName(item.getImgName() == null ? stringArray[0] : item.getImgName()));
                 if ("0".equals(item.getImgstatic())) {
                     helper.getView(R.id.iv_img).setBackgroundResource(R.drawable.card_bg_gray_cir);
                     helper.getView(R.id.iv_img).setEnabled(true);
@@ -146,7 +158,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
                     helper.getView(R.id.iv_img).setBackgroundResource(R.drawable.card_bg_cir);
                     helper.getView(R.id.iv_img).setEnabled(false);
                     helper.getView(R.id.tv_count_day).setVisibility(View.VISIBLE);
-                    helper.setText(R.id.tv_count_day,"总共"+item.getImgsCount()+"天");
+                    helper.setText(R.id.tv_count_day, "总共" + item.getImgsCount() + "天");
                 }
                 helper.setText(R.id.tv_sub, item.getCardName());
             }
@@ -160,19 +172,23 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
 
     @Override
     public void setStatusSucess(String userId, int postion, int isCard) {
-        UserCardsBean userCardsBean = userCardsBeans.get(postion-1);
-        userCardsBean.setImgstatic(isCard+"");
-        if (isCard==1){
-            userCardsBean.setImgsCount(Integer.parseInt(userCardsBean.getImgsCount())+1+"");
+        UserCardsBean userCardsBean = userCardsBeans.get(postion - 1);
+        userCardsBean.setImgstatic(isCard + "");
+        if (isCard == 1) {
+            userCardsBean.setImgsCount(Integer.parseInt(userCardsBean.getImgsCount()) + 1 + "");
         }
         baseQuickAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-        if (userCardsBeans!=null && userCardsBeans.get(position)!=null){
+        if (userCardsBeans != null && userCardsBeans.get(position) != null) {
             UserBean user = AndroidApplication.getInstance().getUser();
-            mPresenter.setCardTodayData(user.getUid()+"",position+1,1);
+            if (userCardsBeans.get(position).getCardName().equals(getResources().getString(R.string.add_interest_card))) {
+                CardSettingActivity.start(mActivity);
+            } else {
+                mPresenter.setCardTodayData(user.getUid() + "", position + 1, 1);
+            }
         }
     }
 
@@ -186,7 +202,13 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Bas
         if (event != null) {
             if (EventTag.loginSucess.equals(event.getEventTag())) {
                 loadData();
+            }else if (EventTag.cardSetSucess.equals(event.getEventTag())){
+                loadData();
             }
         }
+    }
+
+    private void jumpPng() {
+
     }
 }

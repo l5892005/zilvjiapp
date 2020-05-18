@@ -13,6 +13,7 @@ public interface CardSettingContract {
     interface Presenter extends IBasePresenter {
         void getCardDataToDay(String userId);
         void getCardData(String userId);
+        void deleteCardData(String userId, int cid);
         void AddCardType(String userId,String name,String imageName,String colorBg);
 
         void setReModeCard(String userId, int cid, String name, String imageName, String colorBg);
