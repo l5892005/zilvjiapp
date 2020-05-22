@@ -19,7 +19,7 @@ import dagger.Provides;
 public class MainHomeModule {
     public final MainHomeActivity view;
 
-    public MainHomeModule(MainHomeActivity view) {
+    public    MainHomeModule(MainHomeActivity view) {
         this.view = view;
     }
 

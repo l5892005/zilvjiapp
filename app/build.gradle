@@ -9,8 +9,8 @@ android {
         applicationId "com.rongwei.fastcodeaccumulate"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         manifestPlaceholders = [UMENG_CHANNEL_VALUE: "guanwang"]
@@ -38,7 +38,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            // shrinkResources true//没有引用的资源把他移除
+            minifyEnabled false //混淆
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

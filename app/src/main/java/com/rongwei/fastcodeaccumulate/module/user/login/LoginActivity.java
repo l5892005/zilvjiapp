@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.R;
+import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.event.EventTag;
 import com.rongwei.fastcodeaccumulate.data.event.MessageEvent;
@@ -18,6 +20,7 @@ import com.rongwei.fastcodeaccumulate.injector.components.DaggerLoginComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.LoginModule;
 import com.rongwei.fastcodeaccumulate.module.base.ToolbarActivity;
 import com.rongwei.fastcodeaccumulate.module.main.main.MainHomeActivity;
+import com.rongwei.fastcodeaccumulate.module.user.agree.UserAgreementActivity;
 import com.rongwei.fastcodeaccumulate.module.user.register.RegisterActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -26,7 +29,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+@ContentView(R.layout.activity_login)
 public class LoginActivity extends ToolbarActivity implements LoginContract.View, View.OnClickListener {
 
     @Inject
@@ -37,6 +40,10 @@ public class LoginActivity extends ToolbarActivity implements LoginContract.View
     EditText etPwd;
     @BindView(R.id.tv_login)
     TextView tvLogin;
+    @BindView(R.id.tv_user_agree)
+    TextView tvUserAgree;
+    @BindView(R.id.cb_user_agree)
+    CheckBox cbUserAgree;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
@@ -68,12 +75,6 @@ public class LoginActivity extends ToolbarActivity implements LoginContract.View
     }
 
     @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_login;
-
-    }
-
-    @Override
     protected void initData() {
         if (AndroidApplication.getInstance().getUser()!=null) {
             MainHomeActivity.start(mContext);
@@ -85,7 +86,12 @@ public class LoginActivity extends ToolbarActivity implements LoginContract.View
     protected void initView() {
         super.initView();
         tvLogin.setOnClickListener(this);
-
+        tvUserAgree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserAgreementActivity.start(mContext);
+            }
+        });
     }
 
     @Override
@@ -99,10 +105,15 @@ public class LoginActivity extends ToolbarActivity implements LoginContract.View
 
     @Override
     public void onClick(View v) {
+
         String account = etAccout.getText().toString().trim();
         String pwd = etPwd.getText().toString().trim();
         if (account.length()<6||pwd.length()<6){
             toastAlert(getResources().getString(R.string.account_pwd_error));
+            return;
+        }
+        if (!cbUserAgree.isChecked()){
+            toastAlert("需要你同意自律鸡用户协议！");
             return;
         }
         mPresenter.setLogin(account,pwd);

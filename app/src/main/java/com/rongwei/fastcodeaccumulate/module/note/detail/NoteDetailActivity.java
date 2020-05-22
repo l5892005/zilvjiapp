@@ -15,6 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.Cons;
 import com.rongwei.fastcodeaccumulate.R;
+import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
 import com.rongwei.fastcodeaccumulate.data.bean.UserBean;
 import com.rongwei.fastcodeaccumulate.data.event.EventTag;
@@ -36,7 +37,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+@ContentView(R.layout.activity_note_detail)
 public class NoteDetailActivity extends ToolbarActivity implements NoteDetailContract.View {
 
     @Inject
@@ -68,11 +69,6 @@ public class NoteDetailActivity extends ToolbarActivity implements NoteDetailCon
     }
 
 
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_note_detail;
-
-    }
 
     @Override
     protected void initData() {

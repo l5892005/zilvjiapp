@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.R;
+import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.data.bean.PersionNoteListBean;
 import com.rongwei.fastcodeaccumulate.data.event.EventTag;
 import com.rongwei.fastcodeaccumulate.data.event.MessageEvent;
@@ -27,7 +28,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+@ContentView(R.layout.activity_note_edite_detail)
 public class NoteEditeDetailActivity extends ToolbarActivity implements NoteEditeDetailContract.View, View.OnClickListener {
 
     @Inject
@@ -59,11 +60,6 @@ public class NoteEditeDetailActivity extends ToolbarActivity implements NoteEdit
     }
 
 
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_note_edite_detail;
-
-    }
 
     @Override
     protected void initData() {

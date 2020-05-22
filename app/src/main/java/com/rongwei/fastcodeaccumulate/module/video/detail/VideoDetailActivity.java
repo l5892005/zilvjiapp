@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.R;
+import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerVideoDetailComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.VideoDetailModule;
 import com.rongwei.fastcodeaccumulate.module.base.BaseActivity;
@@ -23,7 +24,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+@ContentView(R.layout.activity_video_detail)
 public class VideoDetailActivity extends BaseActivity implements VideoDetailContract.View {
 
     @Inject
@@ -51,11 +52,6 @@ public class VideoDetailActivity extends BaseActivity implements VideoDetailCont
     }
 
 
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_video_detail;
-
-    }
 
     @Override
     protected void initData() {

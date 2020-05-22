@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.rongwei.fastcodeaccumulate.AndroidApplication;
 import com.rongwei.fastcodeaccumulate.R;
+import com.rongwei.fastcodeaccumulate.annotation.ContentView;
 import com.rongwei.fastcodeaccumulate.data.param.InserFastCodeBean;
 import com.rongwei.fastcodeaccumulate.injector.components.DaggerAddFastCodeComponent;
 import com.rongwei.fastcodeaccumulate.injector.modules.AddFastCodeModule;
@@ -20,7 +21,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+@ContentView(R.layout.activity_add_fast_code)
 public class AddFastCodeActivity extends ToolbarActivity implements AddFastCodeContract.View {
 
     @Inject
@@ -56,11 +57,6 @@ public class AddFastCodeActivity extends ToolbarActivity implements AddFastCodeC
     }
 
 
-    @Override
-    protected int attachLayoutRes() {
-        return R.layout.activity_add_fast_code;
-
-    }
     public void submit(View view){
         InserFastCodeBean inserFastCodeBean = new InserFastCodeBean(nameR.getText().toString().trim(),1,1,etContentR.getText().toString().trim(),5);
         mPresenter.inserFastCode(inserFastCodeBean);
