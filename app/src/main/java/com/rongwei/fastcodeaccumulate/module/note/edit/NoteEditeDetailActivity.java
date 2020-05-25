@@ -93,7 +93,7 @@ public class NoteEditeDetailActivity extends ToolbarActivity implements NoteEdit
         String title = etTitle.getText().toString();
         String content = etContent.getText().toString();
 
-        if (content.length()==0 || content.length()>=1000){
+        if (content.length()==0 || content.length()>=2000){
             toastFailed(getResources().getString(R.string.content_lenght_error));
             return;
         }
