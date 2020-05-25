@@ -1,10 +1,14 @@
 package com.rongwei.fastcodeaccumulate.module.main.main;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.view.View;
 import android.webkit.WebView;
@@ -43,6 +47,8 @@ import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -126,7 +132,6 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
                 }
             }
         });
-
     }
 
     public int mLastPosition = -1;
@@ -174,6 +179,92 @@ public class MainHomeActivity extends BaseActivity implements MainHomeContract.V
 
         }
     }
+    static {
+        System.loadLibrary("native-lib");
+
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    public  void update(View view){
+        AsyncTask<Void, Void, File> pach = new AsyncTask<Void, Void, File>() {
+            @Override
+            protected File doInBackground(Void... voids) {
+                File pach = new File(Environment.getExternalStorageDirectory(), "pach");
+//                File oldApk = new File(Environment.getExternalStorageDirectory(), "old.apk");
+                String newApk = createNewApk().getAbsolutePath();
+                File oldApk = new File(getApplicationInfo().sourceDir);
+                try {
+                    readfile(getApplicationInfo().sourceDir);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                bsdiff(oldApk.getAbsolutePath(), pach.getAbsolutePath(), newApk);
+                return new File(newApk);
+            }
+
+            @Override
+            protected void onPostExecute(File file) {
+                super.onPostExecute(file);
+                installApk(file);
+            }
+        };
+        pach.execute();
+    }
+    /**
+     * 读取某个文件夹下的所有文件
+     */
+    public boolean readfile(String filepath) throws FileNotFoundException, IOException {
+        try {
+
+            File file = new File(filepath);
+            if (!file.isDirectory()) {
+                System.out.println("文件");
+                System.out.println("path=" + file.getPath());
+                System.out.println("absolutepath=" + file.getAbsolutePath());
+                System.out.println("name=" + file.getName());
+
+            } else if (file.isDirectory()) {
+                System.out.println("文件夹");
+                String[] filelist = file.list();
+                for (int i = 0; i < filelist.length; i++) {
+                    File readfile = new File(filepath + "\\" + filelist[i]);
+                    if (!readfile.isDirectory()) {
+                        System.out.println("path=" + readfile.getPath());
+                        System.out.println("absolutepath="
+                                + readfile.getAbsolutePath());
+                        System.out.println("name=" + readfile.getName());
+
+                    } else if (readfile.isDirectory()) {
+                        readfile(filepath + "\\" + filelist[i]);
+                    }
+                }
+
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("readfile()   Exception:" + e.getMessage());
+        }
+        return true;
+    }
+
+
+    private File createNewApk() {
+        File newApk =new File(Environment.getExternalStorageDirectory(),"new1.apk");
+        if (!newApk.exists()){
+            try {
+                newApk.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        return newApk;
+    }
+
+    /**
+     * 增量更新
+     */
+    public native void bsdiff(String oldPath,String pach,String newFile);
 
     private void showDownloadProgressDialog(final String fileUrl) {
         progressDialog = new ProgressDialog(this);

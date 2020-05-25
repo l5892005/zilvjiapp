@@ -15,7 +15,12 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#ffdddddd"/>
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="update"
+        android:visibility="gone"
+        android:text="合成apk"/>
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"

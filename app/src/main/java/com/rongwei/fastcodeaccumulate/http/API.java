@@ -75,9 +75,9 @@ public interface API {
 
         @GET("v1/set_note_catalog")
         Observable<BaseResultWrapper<NoteCatalogBean>> setNoteType(@Query("userId")int uid,@Query("info") String name,@Query("isPri") int isPri);
-
-        @GET("v1/set_note_list")
-        Observable<BaseResultWrapper<PersionNoteListBean>> getSetListCatalog(@Query("userId")int uid, @Query("nid")int nid,@Query("title") String title, @Query("content") String content);
+        @FormUrlEncoded
+        @POST("v1/set_note_list")
+        Observable<BaseResultWrapper<PersionNoteListBean>> getSetListCatalog(@Field("userId")int uid, @Field("nid")int nid,@Field("title") String title, @Field("content") String content);
 
         @GET("v1/add_cards_type")
         Observable<BaseResultWrapper<CardBean>> AddCardType(@Query("userId")String userId, @Query("name")String name,@Query("imageName") String imageName, @Query("colorBg")String colorBg);
